@@ -1,26 +1,76 @@
 @import "tailwindcss";
 
+/* ================================
+   Global Design Tokens
+================================ */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Main page colors */
+  --background: #f8f6f2;
+  --foreground: #161c5d;
+
+  /* Brand colors */
+  --primary: #b08d57;
+  --primary-dark: #8c6d3f;
+
+  /* Neutral colors */
+  --dark: #080809;
+  --brand-gray: #eeeeee;
+  --light: #f8f6f2;
 }
+
+/* ================================
+   Tailwind Theme Configuration
+================================ */
 
 @theme inline {
+  /* Background and text colors */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  /* Brand colors */
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+
+  /* Neutral colors */
+  --color-dark: var(--dark);
+  --color-brand-gray: var(--brand-gray);
+  --color-light: var(--light);
+
+  /* Global font */
+  --font-sans: var(--font-vazirmatn);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ================================
+   Global Reset
+================================ */
+
+* {
+  box-sizing: border-box;
 }
+
+/* ================================
+   HTML
+================================ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ================================
+   Body
+================================ */
 
 body {
+  margin: 0;
+
+  /* Global background and text colors */
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+
+  /* Use Vazirmatn globally */
+  font-family: var(--font-vazirmatn), sans-serif;
+
+  /* Persian text direction */
+  direction: rtl;
 }
