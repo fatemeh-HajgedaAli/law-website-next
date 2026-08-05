@@ -1,6 +1,7 @@
 import Container from "@/ui/container";
 
 import Hero from "@/components/hero/Hero";
+import PracticeAreas from "./practiceAreas/PracticeAreas";
 
 export default function MainHome() {
   return (
@@ -9,7 +10,9 @@ export default function MainHome() {
       <Hero />
 
       {/* Main Content Container */}
-      <Container></Container>
+      <Container>
+        <PracticeAreas/>
+      </Container>
     </>
   );
 }

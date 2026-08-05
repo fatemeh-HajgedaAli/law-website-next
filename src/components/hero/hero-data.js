@@ -1,8 +1,7 @@
 // hero-data.js
-
 import heroOne from "@/asset/images/hero/hero-four.jpg";
-import heroTwo from "@/asset/images/hero/hero_three.jpg";
-import heroThree from "@/asset/images/hero/hero_two.jpg";
+import heroTwo from "@/asset/images/hero/lawyer.jpg";
+import heroThree from "@/asset/images/hero/hero_three.jpg";
 
 export const slides = [
   {
@@ -20,7 +19,6 @@ export const slides = [
     position: "center",
     subtitle: "تجربه، تخصص و تعهد در کنار شما",
     title: "همراه مطمئن شما در مسیر عدالت",
-    description: "ارائه مشاوره و خدمات حقوقی تخصصی با رویکردی حرفه‌ای",
   },
 
   {

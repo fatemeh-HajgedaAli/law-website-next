@@ -9,8 +9,14 @@ export default function HeroSlide({
 }) {
   return (
     <div
-      className="relative min-h-[700px]  bg-cover 
-      bg-center bg-no-repeat"
+      className="
+    relative
+    min-h-[500px]
+    lg:min-h-[700px]
+    bg-cover
+    bg-center
+    bg-no-repeat
+  "
       style={{
         backgroundImage: `url(${image.src})`,
       }}
@@ -20,13 +26,23 @@ export default function HeroSlide({
 
       {/* Container */}
       <div
-        className="relative mx-auto flex min-h-[700px]
-       w-full max-w-6xl items-center px-4 sm:px-6 lg:px-8"
+        className="
+    relative
+    mx-auto
+    flex
+    min-h-[700px]
+    w-full
+    max-w-6xl
+    items-center
+    px-4
+    sm:px-6
+    lg:px-8
+  "
       >
         {/* Content */}
         <div
           className={`
-            w-full lg:w-7/12
+            w-full lg:w-7/12 mt-60
             ${
               position === "left"
                 ? "text-left"
@@ -37,7 +53,7 @@ export default function HeroSlide({
           `}
         >
           {/* Small Text */}
-          <span className="mb-4 block text-lg font-medium text-white">
+          <span className="mb-2 block text-lg font-medium text-white">
             {subtitle}
           </span>
 
