@@ -1,22 +1,22 @@
-// components/PatternLayer.jsx
 import { PATTERNS } from "./constants/patterns";
 
-export const PatternLayer = ({
-  size,
-  border = "20",
-  opacity = "30",
-  type = "dot",
-  className = "",
-}) => {
-  const pattern = PATTERNS[type];
-
+export const PatternLayer = ({ size, opacity, type }) => {
   return (
     <div
-      className={`absolute rounded-full border-2 border-primary/${border} opacity-${opacity} ${className}`}
+      className="
+      absolute
+      rounded-full
+      border
+      border-primary/30
+      "
       style={{
         height: size,
+
         width: size,
-        ...pattern,
+
+        opacity: opacity / 100,
+
+        ...PATTERNS[type],
       }}
     />
   );
