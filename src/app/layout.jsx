@@ -1,7 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
 
-import Header from "@/components/home/Header";
+import Header from "@/components/header/Header";
 
 const vazirmatn = localFont({
   src: "./fonts/webfonts/Vazirmatn[wght].woff2",

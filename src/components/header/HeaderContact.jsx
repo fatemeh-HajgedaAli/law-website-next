@@ -3,13 +3,15 @@
 import Image from "next/image";
 import { Phone, Mail } from "lucide-react";
 
+import mainLogo from "../../asset/images/logos/mainLogo.png";
+
 import { toPersianDigits } from "@/utils/toPersianDigits";
 
 export default function HeaderContact() {
   const phoneNumber = "099002190109";
 
   return (
-    <header className="w-full bg-gray-200/30 shadow-sm ">
+    <header className=" w-full bg-gray-200/30 shadow-sm ">
       <div
         className="mx-auto flex h-20 w-full max-w-7xl items-center 
       justify-center px-4 sm:px-6 lg:justify-between lg:px-8"
@@ -68,9 +70,9 @@ export default function HeaderContact() {
         {/* Brand Logo */}
         <div>
           <Image
-            src="/images/logos/mainLogo.png"
+            src={mainLogo}
             alt="Law Firm Logo"
-            width={180}
+            width={80}
             height={60}
             priority
           />

@@ -5,13 +5,16 @@ import { ChevronDown } from "lucide-react";
 export default function DesktopNavigation({ isHomeOpen, setIsHomeOpen }) {
   return (
     <div className="hidden lg:flex">
-      <ul className="flex items-center gap-8 text-dark">
+      <ul
+        className="flex items-center gap-8 text-white
+"
+      >
         {/* Home Dropdown */}
         <li className="relative">
           <button
             type="button"
             onClick={() => setIsHomeOpen(!isHomeOpen)}
-            className="flex items-center gap-1 font-medium transition-colors hover:text-primary"
+            className="flex items-center gap-1 font-medium  transition-colors hover:text-primary"
           >
             خانه
             <ChevronDown
@@ -22,7 +25,10 @@ export default function DesktopNavigation({ isHomeOpen, setIsHomeOpen }) {
           </button>
 
           {isHomeOpen && (
-            <div className="absolute right-0 top-full mt-3 w-48 rounded-md bg-white p-2 shadow-lg">
+            <div
+              className="absolute right-0 top-full mt-8 w-48 rounded-md
+             bg-white/20 p-2 shadow-lg"
+            >
               <Link
                 href="/about"
                 className="block rounded-md px-4 py-3 text-sm transition-colors hover:bg-primary hover:text-white"
