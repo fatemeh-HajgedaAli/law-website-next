@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { Phone, Mail } from "lucide-react";
 
-import mainLogo from "../../asset/images/logos/mainLogo.png";
+import mainLogo from "../../../public/logos/mainLogo.jpg";
 
 import { toPersianDigits } from "@/utils/toPersianDigits";
 

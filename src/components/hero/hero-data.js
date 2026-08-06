@@ -1,12 +1,7 @@
-// hero-data.js
-import heroOne from "@/asset/images/hero/hero-four.jpg";
-import heroTwo from "@/asset/images/hero/lawyer.jpg";
-import heroThree from "@/asset/images/hero/hero_three.jpg";
-
 export const slides = [
   {
     id: 1,
-    image: heroOne,
+    image: "/images/hero/hero_three.jpg",
     position: "left",
     subtitle: "به وب‌سایت گروه وکلای رهیاب خوش آمدید",
     title: "ارائه خدمات حقوقی تخصصی",
@@ -15,7 +10,7 @@ export const slides = [
 
   {
     id: 2,
-    image: heroTwo,
+    image: "/images/hero/lawyer.jpg",
     position: "center",
     subtitle: "تجربه، تخصص و تعهد در کنار شما",
     title: "همراه مطمئن شما در مسیر عدالت",
@@ -23,7 +18,7 @@ export const slides = [
 
   {
     id: 3,
-    image: heroThree,
+    image: "/images/hero/hero_three.jpg",
     position: "right",
     subtitle: "مشاوره حقوقی حرفه‌ای",
     title: "حامی حقوق و منافع شما",

@@ -1,19 +1,13 @@
-import businessLaw from "../../asset/images/practiceArea/bussinessLaw.jpg";
-import lawForm from "../../asset/images/practiceArea/LawForm.jpg";
-import family from "../../asset/images/practiceArea/family.jpg";
-import drugCrime from "../../asset/images/practiceArea/drug-offence.jpg";
-
-// icons
 import { FaGavel, FaBalanceScale, FaUserShield } from "react-icons/fa";
 import { GiHandcuffs } from "react-icons/gi";
-// data
+
 export const practiceAreas = [
   {
     id: 1,
     title: "دفاع کیفری",
     description:
       "ارائه خدمات تخصصی حقوقی و دفاع از حقوق موکلان در پرونده‌های کیفری",
-    image: businessLaw,
+    image: "/images/practiceArea/bussinessLaw.jpg",
     icon: FaUserShield,
     type: "icon",
   },
@@ -22,24 +16,35 @@ export const practiceAreas = [
     id: 2,
     title: "دعاوی خانوادگی",
     description: "پیگیری پرونده‌های خانوادگی با رویکرد تخصصی و قانونی",
-    image: family,
+    image: "/images/practiceArea/family.jpg",
     icon: FaBalanceScale,
     type: "icon",
   },
+
   {
     id: 3,
     title: "جرائم مواد مخدر",
     description: "مشاوره و دفاع تخصصی در پرونده‌های مرتبط با جرائم مواد مخدر",
-    image: drugCrime,
+    image: "/images/practiceArea/drug-offence.jpg",
     icon: GiHandcuffs,
     type: "icon",
   },
+
   {
     id: 4,
     title: "امور حقوقی",
     description: "ارائه راهکارهای حقوقی برای مسائل مختلف",
-    image: lawForm,
+    image: "/images/practiceArea/LawForm.jpg",
     icon: FaGavel,
     type: "icon",
   },
+  {
+    id: 5,
+    title: "وکیل اسناد تجاری",
+    description: "ارائه راهکارهای حقوقی برای مسائل مختلف",
+    image: "/images/practiceArea/laweyer.jpg",
+    icon: FaGavel,
+    type: "icon",
+  },
+  
 ];

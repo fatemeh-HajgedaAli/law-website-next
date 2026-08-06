@@ -13,12 +13,13 @@ export default function HeroSlide({
     relative
     min-h-[500px]
     lg:min-h-[700px]
-    bg-cover
+    bg-contain
     bg-center
     bg-no-repeat
   "
       style={{
-        backgroundImage: `url(${image.src})`,
+        backgroundImage: `url(${image})`,
+        backgroundSize: "100% 150%",
       }}
     >
       {/* Overlay */}

@@ -4,9 +4,12 @@ import { practiceAreas } from "./practiceData";
 // start
 export default function PracticeAreas() {
   return (
-    <section className="relative -mt-[120px] py-20">
-      <div className="container-fluid">
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    <section className="relative -mt-[70px] py-2 w-full">
+      <div>
+        <div
+          className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-5
+     lg:gap-0 gap-2    "
+        >
           {practiceAreas.map((item) => {
             const Icon = item.icon;
             // jsx
@@ -19,7 +22,11 @@ export default function PracticeAreas() {
                   h-[380px]
                   overflow-hidden
                   bg-white
-                  shadow-sm
+                  shadow-xl
+                  border-1
+                  border-gray-200
+                  transition-all
+                  duration-300
                 "
               >
                 {/* Background Image */}
@@ -37,7 +44,7 @@ export default function PracticeAreas() {
                     group-hover:scale-100
                   "
                   style={{
-                    backgroundImage: `url(${item.image.src})`,
+                    backgroundImage: `url(${item.image})`,
                   }}
                 />
 
@@ -81,7 +88,6 @@ export default function PracticeAreas() {
                       text-primary
                       transition-colors
                       duration-500
-                     
                     "
                   >
                     <Icon />
@@ -120,31 +126,29 @@ export default function PracticeAreas() {
                   <Link
                     href="/services"
                     className="
-    relative
-    flex
-    h-12
-    w-12
-    items-center
-    justify-center
-    overflow-hidden
-    rounded-sm
-    border
-    border-gray-300
-    text-gray-700
-    transition-colors
-    duration-300
-
-    before:absolute
-    before:inset-0
-    before:-translate-y-full
-    before:bg-primary
-    before:transition-transform
-    before:duration-300
-
-    group-hover:border-primary
-    group-hover:text-white
-    group-hover:before:translate-y-0
-  "
+                      relative
+                      flex
+                      h-12
+                      w-12
+                      items-center
+                      justify-center
+                      overflow-hidden
+                      rounded-full
+                      border-2
+                      border-gray-300
+                      text-gray-700
+                      transition-colors
+                      duration-300
+                      before:absolute
+                      before:inset-0
+                      before:-translate-y-full
+                      before:bg-primary
+                      before:transition-transform
+                      before:duration-300
+                      group-hover:border-primary
+                      group-hover:text-white
+                      group-hover:before:translate-y-0
+                    "
                   >
                     <span className="relative z-10">→</span>
                   </Link>
