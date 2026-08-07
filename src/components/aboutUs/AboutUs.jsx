@@ -1,25 +1,24 @@
-import { AboutText } from "./AboutText";
-import { AboutPngImage } from "./AboutPngImage";
-import { AboutImage } from "./AboutImage";
+import AboutContent from "./AboutContent";
+import AboutGallery from "./AboutGallery";
 
 export default function AboutUs() {
   return (
-    <section className="overflow-hidden py-20">
-      <div className="container mx-auto px-4">
+    <section
+      className="relative overflow-hidden bg-[#F8F5EF] py-20 lg:py-8"
+      dir="rtl"
+    >
+      <div className="container mx-auto max-w-7xl px-5">
         <div
           className="
           grid
-          grid-cols-1
           items-center
-          gap-10
-          lg:grid-cols-[1.1fr_0.8fr_0.8fr]
+          gap-14
+          lg:grid-cols-[1fr_1fr]
+          lg:gap-20
           "
         >
-          <AboutText />
-
-          <AboutPngImage />
-
-          <AboutImage />
+          <AboutContent />
+          <AboutGallery />
         </div>
       </div>
     </section>
