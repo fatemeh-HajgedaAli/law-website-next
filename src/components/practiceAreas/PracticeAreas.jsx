@@ -123,7 +123,7 @@ export default function PracticeAreas() {
                   </p>
 
                   {/* Button */}
-                  <Link
+                  {/*        <Link
                     href="/services"
                     className="
                       relative
@@ -151,7 +151,7 @@ export default function PracticeAreas() {
                     "
                   >
                     <span className="relative z-10">→</span>
-                  </Link>
+                  </Link>  */}
                 </div>
               </div>
             );

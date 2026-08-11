@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function HeroSlide({
@@ -8,115 +9,271 @@ export default function HeroSlide({
   description,
 }) {
   return (
-    <div
-      className="
-    relative
-    min-h-[500px]
-    lg:min-h-[700px]
-    bg-contain
-    bg-center
-    bg-no-repeat
-  "
-      style={{
-        backgroundImage: `url(${image})`,
-        backgroundSize: "100% 150%",
-      }}
-    >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-foreground/60" />
+    <section className="relative min-h-screen overflow-hidden bg-[#f4f1eb]">
+      <div className="grid min-h-screen lg:grid-cols-2">
+        {/* =========================
+            IMAGE SIDE
+        ========================== */}
+        <div className="relative order-1 min-h-[430px] overflow-hidden lg:order-1 lg:min-h-screen">
+          {/* Image */}
+          <Image
+            src={image}
+            alt={title}
+            fill
+            priority
+            className="
+              object-cover
+              object-center
+              transition-transform
+              duration-[2000ms]
+              hover:scale-105
+            "
+          />
 
-      {/* Container */}
-      <div
-        className="
-    relative
-    mx-auto
-    flex
-    min-h-[700px]
-    w-full
-    max-w-6xl
-    items-center
-    px-4
-    sm:px-6
-    lg:px-8
-  "
-      >
-        {/* Content */}
+          {/* Image Overlay */}
+          <div className="absolute inset-0 bg-black/10" />
+
+          {/* Image Number */}
+          <div className="absolute bottom-8 left-8 z-10 flex items-center gap-4 text-white">
+            <span className="text-xs tracking-[0.3em] opacity-70">01</span>
+
+            <span className="h-px w-12 bg-white/50" />
+
+            <span className="text-xs uppercase tracking-[0.3em] opacity-70">
+              Law Firm
+            </span>
+          </div>
+
+          {/* Vertical Label */}
+          <div
+            className="
+              absolute
+              right-6
+              top-1/2
+              hidden
+              -translate-y-1/2
+              rotate-90
+              text-[10px]
+              font-medium
+              uppercase
+              tracking-[0.45em]
+              text-white/70
+              lg:block
+            "
+          >
+            Justice • Experience • Trust
+          </div>
+        </div>
+
+        {/* =========================
+            CONTENT SIDE
+        ========================== */}
         <div
-          className={`
-            w-full lg:w-7/12 mt-60
-            ${
-              position === "left"
-                ? "text-left"
-                : position === "center"
-                  ? "mx-auto text-center"
-                  : "ml-auto text-right"
-            }
-          `}
+          className="
+            order-2
+            flex
+            min-h-[600px]
+            items-center
+            bg-[#f4f1eb]
+            px-6
+            py-16
+            sm:px-10
+            lg:order-2
+            lg:min-h-screen
+            lg:px-16
+            xl:px-24
+          "
         >
-          {/* Small Text */}
-          <span className="mb-2 block text-lg font-medium text-white">
-            {subtitle}
-          </span>
-
-          <h1 className="mb-5 text-4xl font-bold text-white sm:text-5xl lg:text-6xl">
-            {title}
-          </h1>
-
-          <h4 className="mb-8 text-xl font-medium leading-9 text-white">
-            {description}
-          </h4>
-
-          {/* Buttons */}
           <div
             className={`
-              flex gap-4
+              w-full
+              max-w-2xl
               ${
                 position === "center"
-                  ? "justify-center"
+                  ? "mx-auto text-center"
                   : position === "right"
-                    ? "justify-end"
-                    : "justify-start"
+                    ? "mr-auto text-right"
+                    : "ml-auto text-left"
               }
             `}
           >
-            <Link
-              href="/contact"
-              className="
-    relative overflow-hidden border border-gray-400 
-    bg-primary px-6 py-4 text-sm font-medium text-white border--1 border-white
-    transition-colors duration-300
-    before:absolute before:inset-0
-    before:-translate-y-full
-    before:bg-foreground
-    before:transition-transform before:duration-300
-    hover:before:translate-y-0
-  "
+            {/* Small Editorial Label */}
+            <div
+              className={`
+                mb-8
+                flex
+                items-center
+                gap-4
+                ${
+                  position === "center"
+                    ? "justify-center"
+                    : position === "right"
+                      ? "justify-end"
+                      : "justify-start"
+                }
+              `}
             >
-              <span className="relative z-10">دریافت مشاوره</span>
-            </Link>
+              <span className="h-px w-12 bg-primary" />
 
-            <Link
-              href="/about"
+              <span
+                className="
+                  text-xs
+                  font-semibold
+                  uppercase
+                  tracking-[0.3em]
+                  text-primary
+                "
+              >
+                {subtitle}
+              </span>
+            </div>
+
+            {/* Main Title */}
+            <h1
               className="
-    relative overflow-hidden
-    border border-gray-400 
-    px-6 py-4 
-    text-sm font-medium text-gray-400
-    transition-colors duration-300
-    before:absolute before:inset-0
-    before:-translate-y-full
-    before:bg-primary
-    before:opacity-100
-    before:transition-transform before:duration-300
-    hover:before:translate-y-0
-    hover:text-white
-  "
+                mb-8
+                text-5xl
+                font-bold
+                leading-[1]
+                tracking-[-0.03em]
+                text-[#171717]
+                sm:text-6xl
+                lg:text-7xl
+                xl:text-[82px]
+              "
             >
-              <span className="relative z-10">درباره ما</span>
-            </Link>
+              {title}
+            </h1>
+
+            {/* Decorative Line */}
+            <div
+              className={`
+                mb-8
+                h-px
+                w-20
+                bg-black/20
+                ${
+                  position === "center"
+                    ? "mx-auto"
+                    : position === "right"
+                      ? "mr-auto"
+                      : "ml-0"
+                }
+              `}
+            />
+
+            {/* Description */}
+            <p
+              className="
+                mb-10
+                max-w-xl
+                text-base
+                leading-8
+                text-[#66615b]
+                sm:text-lg
+              "
+            >
+              {description}
+            </p>
+
+            {/* CTA */}
+            <div
+              className={`
+                flex
+                flex-wrap
+                items-center
+                gap-6
+                ${
+                  position === "center"
+                    ? "justify-center"
+                    : position === "right"
+                      ? "justify-end"
+                      : "justify-start"
+                }
+              `}
+            >
+              {/* Primary CTA */}
+              <Link
+                href="/contact"
+                className="
+                  group
+                  inline-flex
+                  items-center
+                  gap-4
+                  bg-[#171717]
+                  px-7
+                  py-4
+                  text-sm
+                  font-medium
+                  text-white
+                  transition-all
+                  duration-300
+                  hover:bg-primary
+                "
+              >
+                <span>دریافت مشاوره</span>
+
+                <span
+                  className="
+                    text-lg
+                    transition-transform
+                    duration-300
+                    group-hover:-translate-x-1
+                  "
+                >
+                  ←
+                </span>
+              </Link>
+
+              {/* Secondary CTA */}
+              <Link
+                href="/about"
+                className="
+                  group
+                  inline-flex
+                  items-center
+                  gap-3
+                  border-b
+                  border-black/30
+                  pb-2
+                  text-sm
+                  font-medium
+                  text-[#171717]
+                  transition-colors
+                  duration-300
+                  hover:border-primary
+                  hover:text-primary
+                "
+              >
+                <span>درباره ما</span>
+              </Link>
+            </div>
+
+            {/* Bottom Information */}
+            <div
+              className="
+                mt-16
+                flex
+                items-center
+                gap-6
+                border-t
+                border-black/10
+                pt-6
+              "
+            >
+              <span className="text-xs font-medium uppercase tracking-[0.2em] text-black/40">
+                Trusted Legal Counsel
+              </span>
+
+              <span className="h-px w-8 bg-black/20" />
+
+              <span className="text-xs text-black/40">
+                Professional • Confidential • Experienced
+              </span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

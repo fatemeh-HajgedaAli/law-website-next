@@ -20,40 +20,26 @@ export default function HeaderNavigation({ scrolled }) {
     <>
       {/* ================= NAVBAR ================= */}
       <nav
-        className={`
-    relative
-    z-40
-    lg:mx-24
-    transition-all
-    duration-300
-
+        className={`relative z-40 lg:mx-24 transition-all duration-300 
+shadow-xl
     ${
       scrolled
         ? `
-          bg-background/30
+          bg-background/40
           text-foreground
            backdrop-blur-md
           shadow-sm
-          
         `
         : `
-          bg-white/30
-          text-primary
+          bg-white/70
+         text-foreground
         `
     }
   `}
       >
         <div className="mx-auto w-full max-w-6xl">
           <div
-            className="
-    flex
-    h-20
-    w-full
-    items-center
-    justify-between
-    px-4
-    sm:px-6
-    lg:px-2
+            className=" flex h-20 w-full items-center justify-between px-4 sm:px-6 lg:px-2
  "
           >
             {/* ================= RIGHT NAVIGATION ================= */}
