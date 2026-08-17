@@ -31,20 +31,10 @@ export default function AboutGallery() {
 
         {/* Badge */}
 
-        <div className="absolute right-6 top-6 rounded-full bg-[#B08B57] px-5 py-2 shadow-xl backdrop-blur-md">
-          <span className="text-xs font-bold uppercase tracking-[3px] text-white">
+        <div className="absolute right-6 top-6 rounded-full bg-[#B08B57] px-6 py-2 shadow-xl backdrop-blur-md">
+          <span className="text-xs font-bold uppercase tracking-[2px] text-white">
             Premium
           </span>
-        </div>
-
-        {/* Glass Card */}
-
-        <div className="absolute bottom-6 left-6 right-6 rounded-3xl border border-white/20 bg-white/10 px-6 py-5 backdrop-blur-xl transition duration-500 group-hover:bg-white/15">
-          <h3 className="text-2xl font-bold text-white">عدالت، تخصص، اعتماد</h3>
-
-          <p className="mt-2 text-sm leading-7 text-gray-200">
-            همراه شما در تمامی مراحل رسیدگی به پرونده
-          </p>
         </div>
       </div>
 
@@ -53,8 +43,8 @@ export default function AboutGallery() {
       <div
         className="
         absolute
-        lg:left-[-15px]
-        left-10
+        lg:left-[10px]
+        left-2
         top-[30%]
         flex
         flex-col
