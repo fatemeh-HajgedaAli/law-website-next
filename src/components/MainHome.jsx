@@ -6,6 +6,7 @@ import AboutUs from "./aboutUs/AboutUs";
 import CTA from "./CTA/CTA";
 import Counter from "./Counter/Counter";
 import LegalPracticeAreas from "./LegalPracticeAreas/LegalPracticeAreas";
+import Testimonials from "./Testimonials/Testimonials";
 
 export default function MainHome() {
   return (
@@ -27,6 +28,9 @@ export default function MainHome() {
       </div>
       {/* LegalPracticeAreas */}
       <LegalPracticeAreas />
+      {/* Testimonials */}
+      <Testimonials />
+      
     </>
   );
 }

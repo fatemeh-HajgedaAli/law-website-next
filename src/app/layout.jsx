@@ -2,6 +2,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 
 import Header from "@/components/header/Header";
+import WebsiteAdFloating from "@/components/website-ad/WebsiteAdFloating";
 
 const vazirmatn = localFont({
   src: "./fonts/webfonts/Vazirmatn[wght].woff2",
@@ -24,6 +25,7 @@ export default function RootLayout({ children }) {
 
         {/* Main content container */}
         <main>{children}</main>
+        <WebsiteAdFloating/>
       </body>
     </html>
   );
