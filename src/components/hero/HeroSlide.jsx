@@ -8,48 +8,90 @@ export default function HeroSlide({
   title,
   description,
 }) {
+  const isCenter = position === "center";
+  const isRight = position === "right";
+
+  const contentAlignment = isCenter
+    ? "mx-auto text-center"
+    : isRight
+      ? "mr-auto text-right"
+      : "ml-auto text-left";
+
+  const itemsAlignment = isCenter
+    ? "justify-center"
+    : isRight
+      ? "justify-end"
+      : "justify-start";
+
+  const lineAlignment = isCenter ? "mx-auto" : isRight ? "mr-auto" : "ml-0";
+
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[#f4f1eb]">
-      <div className="grid min-h-screen lg:grid-cols-2">
-        {/* =========================
-            IMAGE SIDE
-        ========================== */}
-        <div className="relative order-1 min-h-[430px] overflow-hidden lg:order-1 lg:min-h-screen">
-          {/* Image */}
+    <section className="relative min-h-screen w-full overflow-hidden bg-[#f4f1eb]">
+      <div className="grid min-h-screen w-full lg:grid-cols-2">
+        {/* IMAGE SIDE */}
+        <div
+          className="
+            relative
+            order-1
+            min-h-[380px]
+            w-full
+            overflow-hidden
+            lg:order-1
+            lg:min-h-screen
+          "
+        >
           <Image
             src={image}
             alt={title}
             fill
             priority
+            sizes="(max-width: 1024px) 100vw, 50vw"
             className="
+              pointer-events-none
               object-cover
               object-center
               transition-transform
               duration-[2000ms]
-              hover:scale-105
+              lg:hover:scale-105
             "
           />
 
-          {/* Image Overlay */}
-          <div className="absolute inset-0 bg-black/10" />
+          <div className="pointer-events-none absolute inset-0 z-[1] bg-black/10" />
 
-          {/* Image Number */}
-          <div className="absolute bottom-8 left-8 z-10 flex items-center gap-4 text-white">
-            <span className="text-xs tracking-[0.3em] opacity-70">01</span>
+          <div
+            className="
+              pointer-events-none
+              absolute
+              bottom-6
+              left-6
+              z-10
+              flex
+              items-center
+              gap-3
+              text-white
+              sm:bottom-8
+              sm:left-8
+              sm:gap-4
+            "
+          >
+            <span className="text-[10px] tracking-[0.3em] opacity-70 sm:text-xs">
+              01
+            </span>
 
-            <span className="h-px w-12 bg-white/50" />
+            <span className="h-px w-8 bg-white/50 sm:w-12" />
 
-            <span className="text-xs uppercase tracking-[0.3em] opacity-70">
+            <span className="text-[10px] uppercase tracking-[0.3em] opacity-70 sm:text-xs">
               Law Firm
             </span>
           </div>
 
-          {/* Vertical Label */}
           <div
             className="
+              pointer-events-none
               absolute
-              right-6
+              right-5
               top-1/2
+              z-10
               hidden
               -translate-y-1/2
               rotate-90
@@ -65,19 +107,19 @@ export default function HeroSlide({
           </div>
         </div>
 
-        {/* =========================
-            CONTENT SIDE
-        ========================== */}
+        {/* CONTENT SIDE */}
         <div
           className="
             order-2
             flex
             min-h-[600px]
+            w-full
             items-center
             bg-[#f4f1eb]
             px-6
-            py-16
+            py-14
             sm:px-10
+            sm:py-16
             lg:order-2
             lg:min-h-screen
             lg:px-16
@@ -88,55 +130,49 @@ export default function HeroSlide({
             className={`
               w-full
               max-w-2xl
-              ${
-                position === "center"
-                  ? "mx-auto text-center"
-                  : position === "right"
-                    ? "mr-auto text-right"
-                    : "ml-auto text-left"
-              }
+              ${contentAlignment}
             `}
           >
-            {/* Small Editorial Label */}
+            {/* SUBTITLE */}
             <div
               className={`
-                mb-8
+                mb-6
                 flex
                 items-center
-                gap-4
-                ${
-                  position === "center"
-                    ? "justify-center"
-                    : position === "right"
-                      ? "justify-end"
-                      : "justify-start"
-                }
+                gap-3
+                sm:mb-8
+                sm:gap-4
+                ${itemsAlignment}
               `}
             >
-              <span className="h-px w-12 bg-primary" />
+              <span className="h-px w-8 bg-primary sm:w-12" />
 
               <span
                 className="
-                  text-xs
+                  text-[10px]
                   font-semibold
                   uppercase
-                  tracking-[0.3em]
+                  tracking-[0.25em]
                   text-primary
+                  sm:text-xs
+                  sm:tracking-[0.3em]
                 "
               >
                 {subtitle}
               </span>
             </div>
 
-            {/* Main Title */}
+            {/* TITLE */}
             <h1
               className="
-                mb-8
-                text-5xl
+                mb-6
+                break-words
+                text-4xl
                 font-bold
-                leading-[1]
+                leading-[1.05]
                 tracking-[-0.03em]
                 text-[#171717]
+                sm:mb-8
                 sm:text-6xl
                 lg:text-7xl
                 xl:text-[82px]
@@ -145,32 +181,30 @@ export default function HeroSlide({
               {title}
             </h1>
 
-            {/* Decorative Line */}
+            {/* DECORATIVE LINE */}
             <div
               className={`
-                mb-8
+                mb-6
                 h-px
-                w-20
+                w-16
                 bg-black/20
-                ${
-                  position === "center"
-                    ? "mx-auto"
-                    : position === "right"
-                      ? "mr-auto"
-                      : "ml-0"
-                }
+                sm:mb-8
+                sm:w-20
+                ${lineAlignment}
               `}
             />
 
-            {/* Description */}
+            {/* DESCRIPTION */}
             <p
               className="
-                mb-10
+                mb-8
                 max-w-xl
-                text-base
-                leading-8
+                text-sm
+                leading-7
                 text-[#66615b]
+                sm:mb-10
                 sm:text-lg
+                sm:leading-8
               "
             >
               {description}
@@ -179,36 +213,39 @@ export default function HeroSlide({
             {/* CTA */}
             <div
               className={`
+                relative
+                z-30
                 flex
                 flex-wrap
                 items-center
-                gap-6
-                ${
-                  position === "center"
-                    ? "justify-center"
-                    : position === "right"
-                      ? "justify-end"
-                      : "justify-start"
-                }
+                gap-4
+                sm:gap-6
+                ${itemsAlignment}
               `}
             >
-              {/* Primary CTA */}
               <Link
                 href="/contact"
                 className="
                   group
+                  relative
+                  z-30
                   inline-flex
+                  min-h-12
+                  touch-manipulation
                   items-center
-                  gap-4
+                  gap-3
                   bg-[#171717]
-                  px-7
-                  py-4
+                  px-6
+                  py-3.5
                   text-sm
                   font-medium
                   text-white
-                  transition-all
+                  transition-colors
                   duration-300
+                  active:scale-[0.98]
                   hover:bg-primary
+                  sm:px-7
+                  sm:py-4
                 "
               >
                 <span>دریافت مشاوره</span>
@@ -225,12 +262,15 @@ export default function HeroSlide({
                 </span>
               </Link>
 
-              {/* Secondary CTA */}
               <Link
                 href="/about"
                 className="
                   group
+                  relative
+                  z-30
                   inline-flex
+                  min-h-12
+                  touch-manipulation
                   items-center
                   gap-3
                   border-b
@@ -241,6 +281,7 @@ export default function HeroSlide({
                   text-[#171717]
                   transition-colors
                   duration-300
+                  active:opacity-70
                   hover:border-primary
                   hover:text-primary
                 "
@@ -249,25 +290,40 @@ export default function HeroSlide({
               </Link>
             </div>
 
-            {/* Bottom Information */}
+            {/* BOTTOM INFORMATION */}
             <div
               className="
-                mt-16
+                mt-12
                 flex
-                items-center
-                gap-6
+                flex-col
+                items-start
+                gap-3
                 border-t
                 border-black/10
-                pt-6
+                pt-5
+                sm:mt-16
+                sm:flex-row
+                sm:items-center
+                sm:gap-6
+                sm:pt-6
               "
             >
-              <span className="text-xs font-medium uppercase tracking-[0.2em] text-black/40">
+              <span
+                className="
+                  text-[10px]
+                  font-medium
+                  uppercase
+                  tracking-[0.2em]
+                  text-black/40
+                  sm:text-xs
+                "
+              >
                 Trusted Legal Counsel
               </span>
 
-              <span className="h-px w-8 bg-black/20" />
+              <span className="hidden h-px w-8 bg-black/20 sm:block" />
 
-              <span className="text-xs text-black/40">
+              <span className="text-[10px] text-black/40 sm:text-xs">
                 Professional • Confidential • Experienced
               </span>
             </div>
