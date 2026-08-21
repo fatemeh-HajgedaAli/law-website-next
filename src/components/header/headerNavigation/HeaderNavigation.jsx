@@ -19,7 +19,7 @@ export default function HeaderNavigation({ scrolled }) {
       <nav
         className={`
           relative
-          z-40
+          z-50
           w-full
           transition-all
           duration-300
@@ -82,7 +82,6 @@ export default function HeaderNavigation({ scrolled }) {
                 aria-label="Open mobile menu"
                 aria-expanded={isMobileMenuOpen}
                 onClick={() => {
-                  alert("CLICK");
                   setIsMobileMenuOpen(true);
                 }}
                 className="
@@ -104,7 +103,7 @@ export default function HeaderNavigation({ scrolled }) {
 
               {/* Consultation */}
               <Link
-                href="/cta"
+                href="/consultation"
                 className="
                   flex
                   items-center

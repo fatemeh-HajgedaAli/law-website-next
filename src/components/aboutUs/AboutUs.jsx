@@ -5,7 +5,7 @@ export default function AboutUs() {
   return (
     <section
       className="relative overflow-hidden bg-[#F8F5EF] py-20 lg:py-8"
-      dir="rtl"
+      dir="rtl" id="about-us"
     >
       <div className="container mx-auto max-w-7xl px-5">
         <div

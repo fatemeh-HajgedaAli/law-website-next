@@ -7,6 +7,7 @@ import CTA from "./CTA/CTA";
 import Counter from "./Counter/Counter";
 import LegalPracticeAreas from "./LegalPracticeAreas/LegalPracticeAreas";
 import Testimonials from "./Testimonials/Testimonials";
+import Cases from "./cases/Cases";
 
 export default function MainHome() {
   return (
@@ -17,10 +18,10 @@ export default function MainHome() {
       <Hero />
       {/* Practice Areas */}
       <PracticeAreas />
-
       {/* About Us */}
       <AboutUs />
-
+      {/* cases */}
+      <Cases/>
       {/* CTA + Counter */}
       <div className="relative">
         <CTA />
@@ -30,7 +31,6 @@ export default function MainHome() {
       <LegalPracticeAreas />
       {/* Testimonials */}
       <Testimonials />
-      
     </>
   );
 }

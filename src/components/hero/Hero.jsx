@@ -35,7 +35,7 @@ export default function Hero() {
       />
 
       {/* Navigation Buttons */}
-      <div className="pointer-events-none absolute inset-0 z-[999999]">
+      <div className="pointer-events-none absolute inset-0 z-30">
         {/* Previous */}
         <button
           type="button"
@@ -45,7 +45,7 @@ export default function Hero() {
             pointer-events-auto
             absolute
             left-2
-            top-1/2
+            top-[30%]
             flex
             h-11
             w-11
@@ -60,6 +60,7 @@ export default function Hero() {
             duration-200
             hover:bg-primary
             active:scale-90
+
           "
         >
           <ArrowLeft className="pointer-events-none h-5 w-5" />
@@ -74,7 +75,7 @@ export default function Hero() {
             pointer-events-auto
             absolute
             right-2
-            top-1/2
+            top-[30%]
             flex
             h-11
             w-11

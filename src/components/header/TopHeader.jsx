@@ -14,7 +14,7 @@ export default function TopHeader() {
         </p>
         {/* Consultation CTA */}
         <Link
-          href="/cta"
+          href="/consultation"
           className="text-primary font-medium transition-colors hover:text-primary-dark underline"
         >
           دریافت مشاوره

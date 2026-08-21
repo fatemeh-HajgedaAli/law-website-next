@@ -31,21 +31,21 @@ export default function DesktopNavigation({ isHomeOpen, setIsHomeOpen }) {
              bg-white p-2 shadow-lg"
             >
               <Link
-                href="/about"
+                href="/#about-us"
                 className="block rounded-md px-4 py-3 text-sm transition-colors hover:bg-primary hover:text-white"
               >
                 درباره ما
               </Link>
 
               <Link
-                href="/cases"
+                href="/#cases"
                 className="block rounded-md px-4 py-3 text-sm transition-colors hover:bg-primary hover:text-white"
               >
                 پرونده‌های ما
               </Link>
 
               <Link
-                href="/faq"
+                href="/#faq"
                 className="block rounded-md px-4 py-3 text-sm transition-colors hover:bg-primary hover:text-white"
               >
                 سوالات متداول
@@ -57,20 +57,10 @@ export default function DesktopNavigation({ isHomeOpen, setIsHomeOpen }) {
         {/* Services */}
         <li>
           <Link
-            href="/services"
+            href="/#services"
             className="font-medium transition-colors hover:text-primary"
           >
-            حوزه‌های فعالیت
-          </Link>
-        </li>
-
-        {/* Lawyers */}
-        <li>
-          <Link
-            href="/lawyers"
-            className="font-medium transition-colors hover:text-primary"
-          >
-            وکلا
+            خدمات ما
           </Link>
         </li>
 
@@ -87,7 +77,7 @@ export default function DesktopNavigation({ isHomeOpen, setIsHomeOpen }) {
         {/* Contact */}
         <li>
           <Link
-            href="/contact"
+            href="/#contact"
             className="font-medium transition-colors hover:text-primary"
           >
             تماس با ما
