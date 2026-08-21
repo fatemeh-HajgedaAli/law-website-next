@@ -5,10 +5,55 @@ import Header from "@/components/header/Header";
 import WebsiteAdFloating from "@/components/website-ad/WebsiteAdFloating";
 
 const vazirmatn = localFont({
-  src: "./fonts/webfonts/Vazirmatn[wght].woff2",
+  src: [
+    {
+      path: "./fonts/ttf/Vazirmatn-Thin.ttf",
+      weight: "100",
+      style: "normal",
+    },
+    {
+      path: "./fonts/ttf/Vazirmatn-ExtraLight.ttf",
+      weight: "200",
+      style: "normal",
+    },
+    {
+      path: "./fonts/ttf/Vazirmatn-Light.ttf",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "./fonts/ttf/Vazirmatn-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "./fonts/ttf/Vazirmatn-Medium.ttf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "./fonts/ttf/Vazirmatn-SemiBold.ttf",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "./fonts/ttf/Vazirmatn-Bold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "./fonts/ttf/Vazirmatn-ExtraBold.ttf",
+      weight: "800",
+      style: "normal",
+    },
+    {
+      path: "./fonts/ttf/Vazirmatn-Black.ttf",
+      weight: "900",
+      style: "normal",
+    },
+  ],
   variable: "--font-vazirmatn",
-  weight: "100 900",
-  style: "normal",
+  display: "swap",
 });
 
 export const metadata = {
@@ -20,12 +65,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fa" dir="rtl">
       <body className={`${vazirmatn.variable} antialiased`}>
-        {/* Full-width Header */}
         <Header />
-
-        {/* Main content container */}
         <main>{children}</main>
-        <WebsiteAdFloating/>
+        <WebsiteAdFloating />
       </body>
     </html>
   );
