@@ -1,14 +1,15 @@
-// اطلاعات فرم مشاوره را بگیرد، اعتبارسنجی اولیه کند و پاسخ مناسب برگرداند.
-
 import { NextResponse } from "next/server";
+import { mongooseConnect } from "@/lib/mongodb";
+import Consultation from "@/models/Consultation";
 
 export async function POST(request) {
   try {
+    // دریافت اطلاعات فرم
     const body = await request.json();
 
     const { name, phone, subject, consultationType, description } = body;
 
-    // اعتبارسنجی
+    // اعتبارسنجی اولیه
     if (!name || !phone || !subject || !consultationType || !description) {
       return NextResponse.json(
         {
@@ -21,14 +22,19 @@ export async function POST(request) {
       );
     }
 
-    // فعلاً اطلاعات را در کنسول می‌بینیم
-    console.log("Consultation Request:", {
+    // اتصال به MongoDB
+    await mongooseConnect();
+
+    // ذخیره درخواست مشاوره
+    const consultation = await Consultation.create({
       name,
       phone,
       subject,
       consultationType,
       description,
     });
+
+    console.log("SAVED TO MONGODB:", consultation);
 
     return NextResponse.json(
       {

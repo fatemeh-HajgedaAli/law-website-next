@@ -21,7 +21,7 @@ export default function MainHome() {
       {/* About Us */}
       <AboutUs />
       {/* cases */}
-      <Cases/>
+      <Cases />
       {/* CTA + Counter */}
       <div className="relative">
         <CTA />

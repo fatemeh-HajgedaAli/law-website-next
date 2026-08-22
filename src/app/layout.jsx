@@ -1,8 +1,8 @@
 import localFont from "next/font/local";
+
 import "./globals.css";
 
-import Header from "@/components/header/Header";
-import WebsiteAdFloating from "@/components/website-ad/WebsiteAdFloating";
+import ConditionalHeader from "@/components/layout/ConditionalHeader";
 
 const vazirmatn = localFont({
   src: [
@@ -52,6 +52,7 @@ const vazirmatn = localFont({
       style: "normal",
     },
   ],
+
   variable: "--font-vazirmatn",
   display: "swap",
 });
@@ -65,9 +66,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fa" dir="rtl">
       <body className={`${vazirmatn.variable} antialiased`}>
-        <Header />
+        <ConditionalHeader />
+
         <main>{children}</main>
-        <WebsiteAdFloating />
       </body>
     </html>
   );
