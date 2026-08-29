@@ -1,4 +1,5 @@
 import Link from "next/link";
+import LoadingLink from "../loadingScreen/LoadingLink";
 
 export default function TopHeader() {
   return (
@@ -13,12 +14,12 @@ export default function TopHeader() {
           نیاز به مشاوره حقوقی دارید؟ همین امروز با ما تماس بگیرید.
         </p>
         {/* Consultation CTA */}
-        <Link
+        <LoadingLink
           href="/consultation"
           className="text-primary font-medium transition-colors hover:text-primary-dark underline"
         >
           دریافت مشاوره
-        </Link>
+        </LoadingLink>
       </div>
     </header>
   );

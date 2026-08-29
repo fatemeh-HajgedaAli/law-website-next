@@ -7,17 +7,15 @@ export default function LoadingScreen() {
   const [isLeaving, setIsLeaving] = useState(false);
 
   useEffect(() => {
-    // نمایش Loading به مدت 30 ثانیه
     const timer = setTimeout(() => {
       setIsLeaving(true);
 
-      // زمان Fade Out
       const hideTimer = setTimeout(() => {
         setIsVisible(false);
-      }, 1000);
+      }, 700);
 
       return () => clearTimeout(hideTimer);
-    }, 40000);
+    }, 9300);
 
     return () => clearTimeout(timer);
   }, []);

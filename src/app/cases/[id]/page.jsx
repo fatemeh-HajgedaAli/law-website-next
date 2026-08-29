@@ -8,6 +8,7 @@ import {
 } from "react-icons/fa";
 
 import { casesData } from "@/components/cases/cases-data";
+import LoadingLink from "@/components/loadingScreen/LoadingLink";
 
 export default async function CaseDetailPage({ params }) {
   const { id } = await params;
@@ -483,32 +484,32 @@ export default async function CaseDetailPage({ params }) {
             </p>
           </div>
 
-          <Link
+          <LoadingLink
             href="/consultation"
             className="
-              inline-flex
-              w-full
-              shrink-0
-              items-center
-              justify-center
-              gap-3
-              rounded-full
-              bg-[#B08B57]
-              px-6
-              py-3.5
-              text-xs
-              font-semibold
-              text-white
-              transition-all
-              duration-300
-              hover:-translate-y-1
-              hover:bg-[#D4AF6A]
-              sm:w-auto
-            "
+    inline-flex
+    w-full
+    shrink-0
+    items-center
+    justify-center
+    gap-3
+    rounded-full
+    bg-[#B08B57]
+    px-6
+    py-3.5
+    text-xs
+    font-semibold
+    text-white
+    transition-all
+    duration-300
+    hover:-translate-y-1
+    hover:bg-[#D4AF6A]
+    sm:w-auto
+  "
           >
             دریافت مشاوره
             <FaArrowLeft className="text-[10px]" />
-          </Link>
+          </LoadingLink>
         </div>
       </div>
     </main>

@@ -7,7 +7,7 @@ export const ctaData = [
     description:
       "با بهره‌گیری از تجربه و دانش وکلای متخصص، در مسیر حل مسائل و چالش‌های حقوقی همراه شما هستیم.",
     buttonText: "دریافت مشاوره",
-    href: "/contact",
+    href: "/consultation",
     image: "/images/cta/cta-02.jfif",
   },
   {
