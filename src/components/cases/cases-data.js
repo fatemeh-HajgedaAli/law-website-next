@@ -8,7 +8,7 @@ export const casesData = [
       "پیگیری و حل یک اختلاف تجاری پیچیده میان دو شرکت با تمرکز بر حفظ منافع موکل.",
     result: "موفقیت در پرونده",
     year: "۱۴۰۴",
-    image: "/images/cases/case-01.jpg",
+    image: "/images/cases/bussinessLaw.jpg",
   },
 
   {
@@ -19,7 +19,7 @@ export const casesData = [
     description: "دفاع تخصصی از حقوق موکل در یک پرونده حساس خانوادگی.",
     result: "رأی به نفع موکل",
     year: "۱۴۰۴",
-    image: "/images/cases/case-02.jpg",
+    image: "/images/cases/family.jpg",
   },
 
   {
@@ -30,7 +30,7 @@ export const casesData = [
     description: "رسیدگی به اختلاف حقوقی مربوط به مالکیت و تعهدات قراردادی.",
     result: "حل موفق اختلاف",
     year: "۱۴۰۳",
-    image: "/images/cases/case-03.jpg",
+    image: "/images/cases/law2.jpg",
   },
 
   {
@@ -41,7 +41,7 @@ export const casesData = [
     description: "دفاع تخصصی و پیگیری مراحل مختلف یک پرونده کیفری پیچیده.",
     result: "رأی مطلوب",
     year: "۱۴۰۳",
-    image: "/images/cases/case-04.jpg",
+    image: "/images/cases/drug-offence.jpg",
   },
 
   {
@@ -52,6 +52,6 @@ export const casesData = [
     description: "بررسی و مدیریت یک اختلاف قراردادی با ارزش مالی بالا.",
     result: "توافق موفق",
     year: "۱۴۰۲",
-    image: "/images/cases/case-05.jpg",
+    image: "/images/cases/LawForm.jpg",
   },
 ];

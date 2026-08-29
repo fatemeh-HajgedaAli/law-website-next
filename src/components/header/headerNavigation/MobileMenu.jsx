@@ -86,7 +86,7 @@ export default function MobileMenu({ isOpen, onClose }) {
 
             <li>
               <Link
-                href="/about"
+                href="/#aboutUs"
                 onClick={onClose}
                 className="
                   block
@@ -108,7 +108,7 @@ export default function MobileMenu({ isOpen, onClose }) {
 
             <li>
               <Link
-                href="/services"
+                href="/#services"
                 onClick={onClose}
                 className="
                   block
@@ -124,57 +124,12 @@ export default function MobileMenu({ isOpen, onClose }) {
                   active:bg-gray-200
                 "
               >
-                حوزه‌های فعالیت
+                خدمات ما
               </Link>
             </li>
-
-            <li>
+                <li>
               <Link
-                href="/lawyers"
-                onClick={onClose}
-                className="
-                  block
-                  touch-manipulation
-                  rounded-lg
-                  px-4
-                  py-3.5
-                  text-base
-                  font-medium
-                  text-gray-800
-                  transition-colors
-                  hover:bg-gray-100
-                  active:bg-gray-200
-                "
-              >
-                وکلا
-              </Link>
-            </li>
-
-            <li>
-              <Link
-                href="/blog"
-                onClick={onClose}
-                className="
-                  block
-                  touch-manipulation
-                  rounded-lg
-                  px-4
-                  py-3.5
-                  text-base
-                  font-medium
-                  text-gray-800
-                  transition-colors
-                  hover:bg-gray-100
-                  active:bg-gray-200
-                "
-              >
-                وبلاگ
-              </Link>
-            </li>
-
-            <li>
-              <Link
-                href="/contact"
+                href="/3contact"
                 onClick={onClose}
                 className="
                   block
@@ -193,6 +148,28 @@ export default function MobileMenu({ isOpen, onClose }) {
                 تماس با ما
               </Link>
             </li>
+            <li>
+              <Link
+                href="/#cases"
+                onClick={onClose}
+                className="
+                  block
+                  touch-manipulation
+                  rounded-lg
+                  px-4
+                  py-3.5
+                  text-base
+                  font-medium
+                  text-gray-800
+                  transition-colors
+                  hover:bg-gray-100
+                  active:bg-gray-200
+                "
+              >
+                پرونده‌های ما
+              </Link>
+            </li>
+   
           </ul>
         </nav>
       </div>

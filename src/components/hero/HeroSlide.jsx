@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { toPersianDigits } from "@/utils/toPersianDigits";
 
 export default function HeroSlide({
@@ -25,13 +24,7 @@ export default function HeroSlide({
         : "justify-start";
 
   return (
-    <section
-      className="dossier-hero relative 
-    overflow-hidden bg-[#FAF7F1]"
-    >
-      {/* =========================
-          ANIMATIONS
-      ========================== */}
+    <section className="dossier-hero relative overflow-hidden bg-[#FAF7F1]">
       <style>{`
         .dossier-hero {
           font-family: "Vazirmatn", Tahoma, sans-serif;
@@ -48,6 +41,7 @@ export default function HeroSlide({
             transform: translateY(0);
           }
         }
+
         @keyframes lineGrow {
           from {
             transform: scaleX(0);
@@ -60,59 +54,44 @@ export default function HeroSlide({
 
         @keyframes marquee {
           from {
-            transform: translateX(0);
+            transform: translate3d(0, 0, 0);
           }
 
           to {
-            transform: translateX(-50%);
+            transform: translate3d(-50%, 0, 0);
           }
         }
 
         .dossier-hero .rise {
-          animation: riseIn 0.8s cubic-bezier(.22, .61, .36, 1) both;
-          animation-delay: calc(var(--i, 0) * 110ms);
+          animation: riseIn 0.7s cubic-bezier(.22, .61, .36, 1) both;
+          animation-delay: calc(var(--i, 0) * 100ms);
         }
-
-        
 
         .dossier-hero .line-grow {
           transform-origin: right;
-          animation: lineGrow 0.9s cubic-bezier(.22, .61, .36, 1) 0.5s both;
+          animation: lineGrow 0.7s cubic-bezier(.22, .61, .36, 1) 0.4s both;
         }
 
         .dossier-hero .marquee-track {
-          animation: marquee 26s linear infinite;
+          animation: marquee 45s linear infinite;
+          transform: translate3d(0, 0, 0);
         }
-@media (prefers-reduced-motion: reduce) {
-  .dossier-hero .rise,
-  .dossier-hero .line-grow,
-  .dossier-hero .marquee-track {
-    animation: none;
-  }
-}
-     
+
+        @media (prefers-reduced-motion: reduce) {
+          .dossier-hero .rise,
+          .dossier-hero .line-grow,
+          .dossier-hero .marquee-track {
+            animation: none;
+          }
+        }
       `}</style>
 
-      {/* =========================
-          MAIN GRID
-      ========================== */}
       <div className="grid min-h-screen grid-cols-1 lg:grid-cols-[1.05fr_1fr]">
-        {/* =========================
-            IMAGE
-        ========================== */}
         <div
           className="
-            relative
-            order-1
-            h-[55vh]
-            min-h-[380px]
-            max-h-[620px]
-            overflow-hidden
-            sm:h-[60vh]
-            lg:order-1
-            lg:h-screen
-            lg:min-h-screen
-            lg:max-h-none
+            relative order-1 h-[55vh] min-h-[380px] max-h-[620px]
+            overflow-hidden sm:h-[60vh]
+            lg:order-1 lg:h-screen lg:min-h-screen lg:max-h-none
             lg:[clip-path:polygon(0_0,100%_0,90%_100%,0_100%)]
           "
         >
@@ -127,35 +106,20 @@ export default function HeroSlide({
               52vw
             "
             className="
-              object-cover
-              object-center
-              transition-transform
-              duration-[2500ms]
+              object-cover object-center
+              transition-transform duration-[2500ms]
               hover:scale-105
             "
           />
 
-          {/* Image Overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-[#0B1526]/90 via-[#101B2E]/25 to-[#101B2E]/10" />
 
-          {/* Image Bottom Info */}
           <div
             className="
-              absolute
-              bottom-5
-              right-5
-              z-10
-              flex
-              items-center
-              gap-3
-              text-white
-
-              sm:bottom-8
-              sm:right-8
-              sm:gap-4
-
-              lg:right-auto
-              lg:left-8
+              absolute bottom-5 right-5 z-10
+              flex items-center gap-3 text-white
+              sm:bottom-8 sm:right-8 sm:gap-4
+              lg:right-auto lg:left-8
             "
           >
             <span className="text-sm tracking-[0.2em] text-[#C9A15F]">
@@ -169,71 +133,31 @@ export default function HeroSlide({
             </span>
           </div>
 
-          {/* Vertical Text - Desktop */}
           <div
             className="
-              absolute
-              right-6
-              top-1/2
-              hidden
-              -translate-y-1/2
-              rotate-90
-              text-[10px]
-              font-medium
-              tracking-[0.5em]
-              text-white/60
-              lg:block
+              absolute right-6 top-1/2 hidden -translate-y-1/2
+              rotate-90 text-[10px] font-medium
+              tracking-[0.5em] text-white/60 lg:block
             "
           >
             عدالت • تجربه • اعتماد
           </div>
         </div>
 
-        {/* =========================
-            CONTENT
-        ========================== */}
         <div
           className="
-            order-2
-            flex
-            min-h-[400px]
-            items-center
-            bg-[#FAF7F1]
-            px-5
-            py-10
-            sm:px-8
-            sm:py-24
-            lg:min-h-screen
-            lg:px-12
-            lg:py-16
-            xl:px-20
-            2xl:px-24
+            order-2 flex min-h-[400px] items-center
+            bg-[#FAF7F1] px-5 py-10
+            sm:px-8 sm:py-24
+            lg:min-h-screen lg:px-12 lg:py-16
+            xl:px-20 2xl:px-24
           "
         >
-          <div
-            className={`
-              flex
-              w-full
-              max-w-2xl
-              flex-col
-              ${align}
-            `}
-          >
-            {/* =========================
-                SUBTITLE
-            ========================== */}
+          <div className={`flex w-full max-w-2xl flex-col ${align}`}>
             <div
               className={`
-                rise
-                mb-6
-                flex
-                w-full
-                items-center
-                gap-3
-                ${justify}
-
-                sm:mb-8
-                sm:gap-4
+                rise mb-6 flex w-full items-center gap-3 ${justify}
+                sm:mb-8 sm:gap-4
               `}
               style={{ "--i": 0 }}
             >
@@ -244,67 +168,34 @@ export default function HeroSlide({
               </span>
             </div>
 
-            {/* =========================
-                TITLE
-            ========================== */}
             <h1
               className="
-                rise
-                mb-5
-                text-4xl
-                font-bold
-                leading-[1.25]
+                rise mb-5 text-4xl font-bold leading-[1.25]
                 text-[#101B2E]
-
-                sm:mb-6
-                sm:text-5xl
-
-                md:text-6xl
-
-                lg:text-7xl
-
-                xl:text-[80px]
+                sm:mb-6 sm:text-5xl
+                md:text-6xl lg:text-7xl xl:text-[80px]
               "
               style={{ "--i": 1 }}
             >
               {title}
             </h1>
 
-            {/* =========================
-                GOLD LINE
-            ========================== */}
             <div
               className="
-                line-grow
-                mb-6
-                h-px
-                w-16
+                line-grow mb-6 h-px w-16
                 bg-[#A87C3E]
-
-                sm:mb-8
-                sm:w-20
+                sm:mb-8 sm:w-20
               "
               style={{
                 transformOrigin: position === "left" ? "left" : "right",
               }}
             />
 
-            {/* =========================
-                DESCRIPTION
-            ========================== */}
             <p
               className="
-                rise
-                mb-8
-                max-w-xl
-                text-sm
-                leading-8
+                rise mb-8 max-w-xl text-sm leading-8
                 text-[#4A5568]
-
-                sm:mb-10
-                sm:text-base
-                sm:leading-8
-
+                sm:mb-10 sm:text-base sm:leading-8
                 lg:text-lg
               "
               style={{ "--i": 2 }}
@@ -312,26 +203,16 @@ export default function HeroSlide({
               {description}
             </p>
 
-            {/* =========================
-                MARQUEE
-            ========================== */}
             <div
               className="
-                mt-8
-                w-full
-                overflow-hidden
-                border-t
-                border-[#101B2E]/10
+                mt-8 w-full overflow-hidden
+                border-t border-[#101B2E]/10
                 pt-5
-                sm:mt-10
-                sm:pt-6
+                sm:mt-10 sm:pt-6
               "
             >
               <div className="flex w-max whitespace-nowrap">
-                <div
-                  className="marquee-track flex 
-                items-center gap-5 sm:gap-6"
-                >
+                <div className="marquee-track flex items-center gap-5 sm:gap-6">
                   {Array.from({ length: 2 }).map((_, i) => (
                     <span key={i} className="flex items-center gap-5 sm:gap-6">
                       <span className="text-[9px] font-medium tracking-[0.15em] text-[#101B2E]/40 sm:text-xs sm:tracking-[0.2em]">
@@ -354,29 +235,15 @@ export default function HeroSlide({
         </div>
       </div>
 
-      {/* =========================
-          SCROLL INDICATOR
-      ========================== */}
       <div
         className="
-          pointer-events-none
-          absolute
-          bottom-6
-          left-1/2
-          z-10
-          hidden
-          -translate-x-1/2
-          flex-col
-          items-center
-          gap-2
-          text-[#101B2E]/40
-
-          lg:flex
+          pointer-events-none absolute bottom-6 left-1/2 z-10
+          hidden -translate-x-1/2 flex-col items-center gap-2
+          text-[#101B2E]/40 lg:flex
         "
       >
         <span className="text-[10px] tracking-[0.3em]">اسکرول</span>
-
-        <span className="h-8 w-px animate-pulse bg-[#101B2E]/30" />
+        <span className="h-8 w-px bg-[#101B2E]/30" />
       </div>
     </section>
   );

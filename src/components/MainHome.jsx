@@ -8,29 +8,43 @@ import Counter from "./Counter/Counter";
 import LegalPracticeAreas from "./LegalPracticeAreas/LegalPracticeAreas";
 import Testimonials from "./Testimonials/Testimonials";
 import Cases from "./cases/Cases";
+import FAQ from "./FAQ/FAQ";
 
 export default function MainHome() {
   return (
     <>
-      {/* Main Content */}
-
       {/* Hero */}
       <Hero />
-      {/* Practice Areas */}
-      <PracticeAreas />
-      {/* About Us */}
-      <AboutUs />
-      {/* cases */}
-      <Cases />
-      {/* CTA + Counter */}
+      {/* PracticeAreas */}
+      <section id="practiceAreas" className="scroll-mt-20">
+        <PracticeAreas />
+      </section>
+      {/* AboutUs */}
+      <section id="aboutUs" className="scroll-mt-20">
+        <AboutUs />
+      </section>
+
+      {/* Cases */}
+      <section id="cases" className="scroll-mt-24">
+        <Cases />
+      </section>
+      {/* CTA+ Counter*/}
       <div className="relative">
         <CTA />
         <Counter />
       </div>
+      <section>
+        <FAQ  />
+      </section>
       {/* LegalPracticeAreas */}
-      <LegalPracticeAreas />
+      <section id="services" className="scroll-mt-20">
+        <LegalPracticeAreas />
+      </section>
+
       {/* Testimonials */}
-      <Testimonials />
+      <section>
+        <Testimonials />
+      </section>
     </>
   );
 }

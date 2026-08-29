@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 
 import ConditionalHeader from "@/components/layout/ConditionalHeader";
+import LoadingScreen from "@/components/LoadingScreen/LoadingScreen";
 
 const vazirmatn = localFont({
   src: [
@@ -66,6 +67,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fa" dir="rtl">
       <body className={`${vazirmatn.variable} antialiased`}>
+        <LoadingScreen />
+
         <ConditionalHeader />
 
         <main>{children}</main>

@@ -51,7 +51,7 @@ export default function DesktopNavigation({ isHomeOpen, setIsHomeOpen }) {
                 سوالات متداول
               </Link>
             </div>
-          )}
+          )} 
         </li>
 
         {/* Services */}

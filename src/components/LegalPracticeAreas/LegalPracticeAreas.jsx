@@ -11,7 +11,7 @@ export default function LegalPracticeAreas() {
     <section
       dir="rtl"
       className="relative overflow-hidden bg-[#f8f8f6] py-6 sm:py-10 lg:py-20"
-     id="#services"
+      id="services"
     >
       <LegalPracticeAreasBackground />
 

@@ -74,3 +74,23 @@ body {
   /* Persian text direction */
   direction: rtl;
 }
+/* ================================
+   Hide Scrollbars
+================================ */
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Firefox */
+html,
+body {
+  scrollbar-width: none;
+}
+
+/* جلوگیری از اسکرول افقی ناخواسته */
+html,
+body {
+  overflow-x: hidden;
+}

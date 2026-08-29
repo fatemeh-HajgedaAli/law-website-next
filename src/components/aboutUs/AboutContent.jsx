@@ -6,12 +6,14 @@ export default function AboutContent() {
     <div className="relative overflow-hidden">
       {/* Background Pattern */}
 
-      <div className="absolute inset-0 z-0
-      opacity-80 pointer-events-none">
+      <div
+        className="absolute inset-0 z-0
+      opacity-80 pointer-events-none"
+      >
         <LawPatterns />
       </div>
 
-      <div className="relative z-10 space-y-8">
+      <div className="relative z-10 space-y-8 ">
         <span className="text-xs font-semibold tracking-[3px] text-[#7D6744]">
           LEGAL SERVICES
         </span>
