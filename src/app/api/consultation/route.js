@@ -1,20 +1,85 @@
 import { NextResponse } from "next/server";
+
 import { mongooseConnect } from "@/lib/mongodb";
 import Consultation from "@/models/Consultation";
+import { isAuthenticated } from "@/lib/auth";
 
-export async function POST(request) {
+// =========================
+// GET - دریافت درخواست‌ها
+// =========================
+
+export async function GET() {
   try {
-    // دریافت اطلاعات فرم
-    const body = await request.json();
+    // بررسی احراز هویت
+    const authenticated = await isAuthenticated();
 
-    const { name, phone, subject, consultationType, description } = body;
-
-    // اعتبارسنجی اولیه
-    if (!name || !phone || !subject || !consultationType || !description) {
+    if (!authenticated) {
       return NextResponse.json(
         {
           success: false,
-          message: "لطفاً تمام فیلدها را کامل کنید.",
+          message: "دسترسی غیرمجاز",
+        },
+        {
+          status: 401,
+        },
+      );
+    }
+
+    await mongooseConnect();
+
+    const consultations = await Consultation.find()
+      .sort({ createdAt: -1 })
+      .lean();
+
+    return NextResponse.json({
+      success: true,
+      consultations,
+    });
+  } catch (error) {
+    console.error("Admin Consultations GET Error:", error);
+
+    return NextResponse.json(
+      {
+        success: false,
+        message: "خطا در دریافت درخواست‌های مشاوره",
+      },
+      {
+        status: 500,
+      },
+    );
+  }
+}
+
+// =========================
+// DELETE - حذف درخواست
+// =========================
+
+export async function DELETE(request) {
+  try {
+    // بررسی احراز هویت
+    const authenticated = await isAuthenticated();
+
+    if (!authenticated) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: "دسترسی غیرمجاز",
+        },
+        {
+          status: 401,
+        },
+      );
+    }
+
+    // دریافت ID
+    const { searchParams } = new URL(request.url);
+    const id = searchParams.get("id");
+
+    if (!id) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: "شناسه درخواست ارسال نشده است.",
         },
         {
           status: 400,
@@ -25,33 +90,33 @@ export async function POST(request) {
     // اتصال به MongoDB
     await mongooseConnect();
 
-    // ذخیره درخواست مشاوره
-    const consultation = await Consultation.create({
-      name,
-      phone,
-      subject,
-      consultationType,
-      description,
+    // حذف درخواست
+    const deletedConsultation = await Consultation.findByIdAndDelete(id);
+
+    // اگر درخواست پیدا نشد
+    if (!deletedConsultation) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: "درخواست موردنظر پیدا نشد.",
+        },
+        {
+          status: 404,
+        },
+      );
+    }
+
+    return NextResponse.json({
+      success: true,
+      message: "درخواست با موفقیت حذف شد.",
     });
-
-    console.log("SAVED TO MONGODB:", consultation);
-
-    return NextResponse.json(
-      {
-        success: true,
-        message: "درخواست مشاوره با موفقیت ثبت شد.",
-      },
-      {
-        status: 201,
-      },
-    );
   } catch (error) {
-    console.error("Consultation API Error:", error);
+    console.error("Admin Consultations DELETE Error:", error);
 
     return NextResponse.json(
       {
         success: false,
-        message: "خطایی در ثبت درخواست مشاوره رخ داد.",
+        message: "خطا در حذف درخواست.",
       },
       {
         status: 500,

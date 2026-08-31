@@ -24,21 +24,22 @@ export default function MainHome() {
         <AboutUs />
       </section>
 
-      {/* Cases */}
-      <section id="cases" className="scroll-mt-24">
-        <Cases />
-      </section>
       {/* CTA+ Counter*/}
       <div className="relative">
         <CTA />
         <Counter />
       </div>
-      <section>
-        <FAQ  />
+      {/* Cases */}
+      <section id="cases" className="scroll-mt-24">
+        <Cases />
       </section>
       {/* LegalPracticeAreas */}
       <section id="services" className="scroll-mt-20">
         <LegalPracticeAreas />
+      </section>
+      {/* FAQ */}
+      <section>
+        <FAQ />
       </section>
 
       {/* Testimonials */}

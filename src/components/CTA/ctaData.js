@@ -17,7 +17,7 @@ export const ctaData = [
     description:
       "برای تصمیم‌های مهم حقوقی، از مشاوره تخصصی و همراهی وکلای باتجربه بهره‌مند شوید.",
     buttonText: "درباره ما",
-    href: "/about",
+    href: "/#aboutUs",
     image: "/images/cta/cta-03.jpg",
   },
 ];

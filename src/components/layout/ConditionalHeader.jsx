@@ -9,8 +9,9 @@ export default function ConditionalHeader() {
   const pathname = usePathname();
 
   const isAdmin = pathname.startsWith("/admin");
+  const isConsultation = pathname === "/consultation";
 
-  if (isAdmin) {
+  if (isAdmin || isConsultation) {
     return null;
   }
 

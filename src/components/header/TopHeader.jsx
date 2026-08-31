@@ -1,6 +1,4 @@
 import Link from "next/link";
-import LoadingLink from "../loadingScreen/LoadingLink";
-
 export default function TopHeader() {
   return (
     <header className="bg-brand-gray text-dark  ">
@@ -14,12 +12,12 @@ export default function TopHeader() {
           نیاز به مشاوره حقوقی دارید؟ همین امروز با ما تماس بگیرید.
         </p>
         {/* Consultation CTA */}
-        <LoadingLink
+        <Link
           href="/consultation"
           className="text-primary font-medium transition-colors hover:text-primary-dark underline"
         >
           دریافت مشاوره
-        </LoadingLink>
+        </Link>
       </div>
     </header>
   );

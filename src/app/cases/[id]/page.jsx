@@ -8,7 +8,6 @@ import {
 } from "react-icons/fa";
 
 import { casesData } from "@/components/cases/cases-data";
-import LoadingLink from "@/components/loadingScreen/LoadingLink";
 
 export default async function CaseDetailPage({ params }) {
   const { id } = await params;
@@ -484,7 +483,7 @@ export default async function CaseDetailPage({ params }) {
             </p>
           </div>
 
-          <LoadingLink
+          <Link
             href="/consultation"
             className="
     inline-flex
@@ -509,7 +508,7 @@ export default async function CaseDetailPage({ params }) {
           >
             دریافت مشاوره
             <FaArrowLeft className="text-[10px]" />
-          </LoadingLink>
+          </Link>
         </div>
       </div>
     </main>
