@@ -77,7 +77,7 @@ export default function DesktopNavigation({ isHomeOpen, setIsHomeOpen }) {
         {/* Contact */}
         <li>
           <Link
-            href="/#contact"
+            href="/#contactus"
             className="font-medium transition-colors hover:text-primary"
           >
             تماس با ما

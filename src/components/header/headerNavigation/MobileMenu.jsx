@@ -129,7 +129,7 @@ export default function MobileMenu({ isOpen, onClose }) {
             </li>
                 <li>
               <Link
-                href="/3contact"
+                href="/#contactus"
                 onClick={onClose}
                 className="
                   block

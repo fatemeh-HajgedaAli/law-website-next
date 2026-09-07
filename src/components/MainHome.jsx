@@ -9,6 +9,7 @@ import LegalPracticeAreas from "./LegalPracticeAreas/LegalPracticeAreas";
 import Testimonials from "./Testimonials/Testimonials";
 import Cases from "./cases/Cases";
 import FAQ from "./FAQ/FAQ";
+import ContactUs from "./contactUs/ContactUs";
 
 export default function MainHome() {
   return (
@@ -45,6 +46,10 @@ export default function MainHome() {
       {/* Testimonials */}
       <section>
         <Testimonials />
+      </section>
+      {/* ContactUs */}
+      <section id="contactus" className="scroll-mt-20">
+        <ContactUs />
       </section>
     </>
   );

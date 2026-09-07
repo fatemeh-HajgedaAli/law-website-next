@@ -28,6 +28,10 @@ export default function Consultation() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
+  // =========================
+  // Handle Input Changes
+  // =========================
+
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -45,29 +49,98 @@ export default function Consultation() {
     }
   };
 
+  // =========================
+  // Handle Submit
+  // =========================
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // جلوگیری از ارسال چندباره
+    if (isLoading) {
+      return;
+    }
 
     setIsLoading(true);
     setIsSuccess(false);
     setErrorMessage("");
 
+    console.log("=================================");
+    console.log("🚀 CONSULTATION SUBMIT");
+    console.log("📦 Form Data:", formData);
+    console.log("=================================");
+
     try {
+      // =========================
+      // API Request
+      // =========================
+
       const response = await fetch("/api/consultation", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Accept: "application/json",
         },
         body: JSON.stringify(formData),
       });
 
-      const result = await response.json();
+      // =========================
+      // Debug Response
+      // =========================
 
-      if (!response.ok) {
-        throw new Error(result?.message || "ارسال درخواست با مشکل مواجه شد.");
+      console.log("📡 API RESPONSE");
+      console.log("Status:", response.status);
+      console.log("Status Text:", response.statusText);
+      console.log("Content-Type:", response.headers.get("content-type"));
+
+      // =========================
+      // Read Response Safely
+      // =========================
+
+      const responseText = await response.text();
+
+      console.log("📄 Raw Response:");
+      console.log(responseText);
+
+      // =========================
+      // Parse JSON Safely
+      // =========================
+
+      let result = {};
+
+      if (responseText.trim()) {
+        try {
+          result = JSON.parse(responseText);
+        } catch (parseError) {
+          console.error("❌ JSON Parse Error:", parseError);
+
+          throw new Error(
+            `پاسخ سرور JSON معتبر نیست. Status: ${response.status}`,
+          );
+        }
+      } else {
+        console.error("❌ Empty Response Body");
+
+        throw new Error(`سرور پاسخ خالی برگرداند. Status: ${response.status}`);
       }
 
-      console.log("Consultation submitted:", result);
+      console.log("✅ Parsed API Result:", result);
+
+      // =========================
+      // Handle API Error
+      // =========================
+
+      if (!response.ok) {
+        throw new Error(
+          result?.message || result?.error || `خطای سرور (${response.status})`,
+        );
+      }
+
+      // =========================
+      // Success
+      // =========================
+
+      console.log("✅ Consultation submitted successfully");
 
       setIsSuccess(true);
 
@@ -79,7 +152,14 @@ export default function Consultation() {
         description: "",
       });
     } catch (error) {
-      console.error("Consultation error:", error);
+      // =========================
+      // Catch Error
+      // =========================
+
+      console.error("=================================");
+      console.error("❌ CONSULTATION ERROR");
+      console.error(error);
+      console.error("=================================");
 
       setErrorMessage(
         error?.message || "خطایی رخ داد. لطفاً دوباره تلاش کنید.",
@@ -88,6 +168,10 @@ export default function Consultation() {
       setIsLoading(false);
     }
   };
+
+  // =========================
+  // Trust Items
+  // =========================
 
   const trustItems = [
     {
@@ -112,7 +196,6 @@ export default function Consultation() {
         overflow-hidden
         bg-[#F5F7FA]
         py-14
-        
       "
     >
       {/* =========================
@@ -235,8 +318,6 @@ export default function Consultation() {
                 sm:mb-6
               "
             >
-              {/* Badge */}
-
               <div
                 className="
                   mb-2
@@ -257,8 +338,6 @@ export default function Consultation() {
                 <CalendarCheck2 className="h-3.5 w-3.5" />
                 درخواست مشاوره حقوقی
               </div>
-
-              {/* Description */}
 
               <p
                 className="
@@ -315,8 +394,6 @@ export default function Consultation() {
                     lg:p-8
                   "
                 >
-                  {/* Decoration */}
-
                   <div
                     className="
                       pointer-events-none
@@ -711,7 +788,9 @@ export default function Consultation() {
                       </div>
                     </div>
 
-                    {/* Error */}
+                    {/* =========================
+                        Error
+                    ========================== */}
 
                     {errorMessage && (
                       <div
@@ -733,7 +812,9 @@ export default function Consultation() {
                       </div>
                     )}
 
-                    {/* Success */}
+                    {/* =========================
+                        Success
+                    ========================== */}
 
                     {isSuccess && (
                       <div
@@ -763,7 +844,9 @@ export default function Consultation() {
                       </div>
                     )}
 
-                    {/* Submit */}
+                    {/* =========================
+                        Submit
+                    ========================== */}
 
                     <button
                       type="submit"
