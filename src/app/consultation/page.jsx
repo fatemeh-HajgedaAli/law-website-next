@@ -56,7 +56,6 @@ export default function Consultation() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // جلوگیری از ارسال چندباره
     if (isLoading) {
       return;
     }
@@ -65,16 +64,7 @@ export default function Consultation() {
     setIsSuccess(false);
     setErrorMessage("");
 
-    console.log("=================================");
-    console.log("🚀 CONSULTATION SUBMIT");
-    console.log("📦 Form Data:", formData);
-    console.log("=================================");
-
     try {
-      // =========================
-      // API Request
-      // =========================
-
       const response = await fetch("/api/consultation", {
         method: "POST",
         headers: {
@@ -84,27 +74,7 @@ export default function Consultation() {
         body: JSON.stringify(formData),
       });
 
-      // =========================
-      // Debug Response
-      // =========================
-
-      console.log("📡 API RESPONSE");
-      console.log("Status:", response.status);
-      console.log("Status Text:", response.statusText);
-      console.log("Content-Type:", response.headers.get("content-type"));
-
-      // =========================
-      // Read Response Safely
-      // =========================
-
       const responseText = await response.text();
-
-      console.log("📄 Raw Response:");
-      console.log(responseText);
-
-      // =========================
-      // Parse JSON Safely
-      // =========================
 
       let result = {};
 
@@ -112,23 +82,15 @@ export default function Consultation() {
         try {
           result = JSON.parse(responseText);
         } catch (parseError) {
-          console.error("❌ JSON Parse Error:", parseError);
+          console.error("JSON Parse Error:", parseError);
 
           throw new Error(
             `پاسخ سرور JSON معتبر نیست. Status: ${response.status}`,
           );
         }
       } else {
-        console.error("❌ Empty Response Body");
-
         throw new Error(`سرور پاسخ خالی برگرداند. Status: ${response.status}`);
       }
-
-      console.log("✅ Parsed API Result:", result);
-
-      // =========================
-      // Handle API Error
-      // =========================
 
       if (!response.ok) {
         throw new Error(
@@ -136,11 +98,7 @@ export default function Consultation() {
         );
       }
 
-      // =========================
-      // Success
-      // =========================
-
-      console.log("✅ Consultation submitted successfully");
+      console.log("Consultation submitted:", result);
 
       setIsSuccess(true);
 
@@ -152,14 +110,7 @@ export default function Consultation() {
         description: "",
       });
     } catch (error) {
-      // =========================
-      // Catch Error
-      // =========================
-
-      console.error("=================================");
-      console.error("❌ CONSULTATION ERROR");
-      console.error(error);
-      console.error("=================================");
+      console.error("Consultation error:", error);
 
       setErrorMessage(
         error?.message || "خطایی رخ داد. لطفاً دوباره تلاش کنید.",
@@ -191,11 +142,16 @@ export default function Consultation() {
       dir="rtl"
       className="
         relative
-        h-screen
-        min-h-[600px]
-        overflow-hidden
+        min-h-screen
+        overflow-x-hidden
+        overflow-y-auto
         bg-[#F5F7FA]
-        py-14
+        px-3
+        py-5
+        sm:px-5
+        sm:py-8
+        lg:px-8
+        lg:py-12
       "
     >
       {/* =========================
@@ -206,13 +162,18 @@ export default function Consultation() {
         className="
           pointer-events-none
           absolute
-          -right-40
-          top-10
-          h-[400px]
-          w-[400px]
+          -right-32
+          top-0
+          h-[260px]
+          w-[260px]
           rounded-full
           bg-[#C9A15F]/10
-          blur-[120px]
+          blur-[90px]
+          sm:-right-40
+          sm:top-10
+          sm:h-[400px]
+          sm:w-[400px]
+          sm:blur-[120px]
         "
       />
 
@@ -220,13 +181,18 @@ export default function Consultation() {
         className="
           pointer-events-none
           absolute
-          -left-40
-          bottom-10
-          h-[350px]
-          w-[350px]
+          -bottom-20
+          -left-32
+          h-[250px]
+          w-[250px]
           rounded-full
           bg-[#243447]/10
-          blur-[120px]
+          blur-[90px]
+          sm:-left-40
+          sm:bottom-10
+          sm:h-[350px]
+          sm:w-[350px]
+          sm:blur-[120px]
         "
       />
 
@@ -240,15 +206,9 @@ export default function Consultation() {
           z-10
           mx-auto
           flex
-          h-full
           w-full
           max-w-[1400px]
           flex-col
-          px-5
-          py-4
-          sm:px-8
-          sm:py-5
-          lg:px-10
         "
       >
         {/* =========================
@@ -262,15 +222,16 @@ export default function Consultation() {
             className="
               group
               inline-flex
+              min-h-[42px]
               items-center
-              gap-3
+              gap-2
               rounded-full
               border
               border-[#D9DEE5]
               bg-white/80
-              px-4
-              py-2.5
-              text-sm
+              px-3.5
+              py-2
+              text-xs
               font-medium
               text-[#243447]
               shadow-sm
@@ -281,9 +242,24 @@ export default function Consultation() {
               hover:border-[#C9A15F]/50
               hover:bg-white
               hover:shadow-md
+              sm:min-h-[44px]
+              sm:gap-3
+              sm:px-4
+              sm:py-2.5
+              sm:text-sm
             "
           >
-            <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+            <ArrowRight
+              className="
+                h-3.5
+                w-3.5
+                transition-transform
+                duration-300
+                group-hover:translate-x-1
+                sm:h-4
+                sm:w-4
+              "
+            />
 
             <span>بازگشت به صفحه اصلی</span>
           </button>
@@ -296,12 +272,12 @@ export default function Consultation() {
         <div
           className="
             flex
-            min-h-0
-            flex-1
+            w-full
             items-center
             justify-center
-            py-4
-            sm:py-5
+            py-5
+            sm:py-7
+            lg:py-10
           "
         >
           <div className="w-full">
@@ -316,37 +292,46 @@ export default function Consultation() {
                 max-w-2xl
                 text-center
                 sm:mb-6
+                lg:mb-7
               "
             >
+              {/* Badge */}
+
               <div
                 className="
                   mb-2
                   inline-flex
                   items-center
-                  gap-2
+                  gap-1.5
                   rounded-full
                   border
                   border-[#C9A15F]/20
                   bg-[#C9A15F]/10
-                  px-3
+                  px-2.5
                   py-1.5
-                  text-[11px]
+                  text-[10px]
                   font-bold
                   text-[#8F6D36]
+                  sm:gap-2
+                  sm:px-3
+                  sm:text-[11px]
                 "
               >
                 <CalendarCheck2 className="h-3.5 w-3.5" />
                 درخواست مشاوره حقوقی
               </div>
 
+              {/* Description */}
+
               <p
                 className="
                   mx-auto
                   mt-2
-                  max-w-xl
-                  text-xs
+                  max-w-[330px]
+                  text-[11px]
                   leading-6
                   text-[#69747E]
+                  sm:max-w-xl
                   sm:text-sm
                 "
               >
@@ -362,14 +347,17 @@ export default function Consultation() {
             <div
               className="
                 mx-auto
+                w-full
                 max-w-5xl
                 overflow-hidden
-                rounded-[1.5rem]
+                rounded-[1.25rem]
                 border
                 border-[#DCE2E8]
                 bg-white/90
-                shadow-[0_25px_70px_-35px_rgba(30,45,60,0.35)]
+                shadow-[0_20px_60px_-30px_rgba(30,45,60,0.35)]
                 backdrop-blur-xl
+                sm:rounded-[1.5rem]
+                sm:shadow-[0_25px_70px_-35px_rgba(30,45,60,0.35)]
               "
             >
               <div
@@ -394,6 +382,8 @@ export default function Consultation() {
                     lg:p-8
                   "
                 >
+                  {/* Decoration */}
+
                   <div
                     className="
                       pointer-events-none
@@ -526,14 +516,21 @@ export default function Consultation() {
                     Form
                 ========================== */}
 
-                <div className="p-5 sm:p-7 lg:p-8">
-                  <div className="mb-5">
+                <div
+                  className="
+                    p-4
+                    sm:p-7
+                    lg:p-8
+                  "
+                >
+                  <div className="mb-5 sm:mb-6">
                     <h3
                       className="
                         font-['Vazirmatn']
-                        text-lg
+                        text-base
                         font-black
                         text-[#202B34]
+                        sm:text-lg
                       "
                     >
                       اطلاعات درخواست
@@ -542,9 +539,10 @@ export default function Consultation() {
                     <p
                       className="
                         mt-1
-                        text-[11px]
+                        text-[10px]
                         leading-5
                         text-[#89939B]
+                        sm:text-[11px]
                       "
                     >
                       لطفاً اطلاعات را با دقت وارد کنید.
@@ -552,7 +550,19 @@ export default function Consultation() {
                   </div>
 
                   <form onSubmit={handleSubmit}>
-                    <div className="grid gap-3.5 sm:grid-cols-2">
+                    {/* =========================
+                        Fields
+                    ========================== */}
+
+                    <div
+                      className="
+                        grid
+                        grid-cols-1
+                        gap-3
+                        sm:grid-cols-2
+                        sm:gap-3.5
+                      "
+                    >
                       {/* Name */}
 
                       <div>
@@ -561,9 +571,10 @@ export default function Consultation() {
                           className="
                             mb-1.5
                             block
-                            text-xs
+                            text-[11px]
                             font-bold
                             text-[#3C4852]
+                            sm:text-xs
                           "
                         >
                           نام و نام خانوادگی
@@ -578,6 +589,7 @@ export default function Consultation() {
                           placeholder="نام و نام خانوادگی"
                           required
                           className="
+                            min-h-[44px]
                             w-full
                             rounded-lg
                             border
@@ -585,7 +597,7 @@ export default function Consultation() {
                             bg-[#FAFBFC]
                             px-3.5
                             py-2.5
-                            text-xs
+                            text-[11px]
                             text-[#26333D]
                             outline-none
                             transition
@@ -594,6 +606,8 @@ export default function Consultation() {
                             focus:bg-white
                             focus:ring-4
                             focus:ring-[#C9A15F]/10
+                            sm:min-h-[46px]
+                            sm:text-xs
                           "
                         />
                       </div>
@@ -606,9 +620,10 @@ export default function Consultation() {
                           className="
                             mb-1.5
                             block
-                            text-xs
+                            text-[11px]
                             font-bold
                             text-[#3C4852]
+                            sm:text-xs
                           "
                         >
                           شماره تماس
@@ -619,11 +634,13 @@ export default function Consultation() {
                           name="phone"
                           type="tel"
                           dir="ltr"
+                          inputMode="tel"
                           value={formData.phone}
                           onChange={handleChange}
                           placeholder="09123456789"
                           required
                           className="
+                            min-h-[44px]
                             w-full
                             rounded-lg
                             border
@@ -632,7 +649,7 @@ export default function Consultation() {
                             px-3.5
                             py-2.5
                             text-left
-                            text-xs
+                            text-[11px]
                             text-[#26333D]
                             outline-none
                             transition
@@ -641,6 +658,8 @@ export default function Consultation() {
                             focus:bg-white
                             focus:ring-4
                             focus:ring-[#C9A15F]/10
+                            sm:min-h-[46px]
+                            sm:text-xs
                           "
                         />
                       </div>
@@ -653,9 +672,10 @@ export default function Consultation() {
                           className="
                             mb-1.5
                             block
-                            text-xs
+                            text-[11px]
                             font-bold
                             text-[#3C4852]
+                            sm:text-xs
                           "
                         >
                           موضوع پرونده
@@ -670,6 +690,7 @@ export default function Consultation() {
                           placeholder="مثلاً: پرونده ملکی"
                           required
                           className="
+                            min-h-[44px]
                             w-full
                             rounded-lg
                             border
@@ -677,7 +698,7 @@ export default function Consultation() {
                             bg-[#FAFBFC]
                             px-3.5
                             py-2.5
-                            text-xs
+                            text-[11px]
                             text-[#26333D]
                             outline-none
                             transition
@@ -686,6 +707,8 @@ export default function Consultation() {
                             focus:bg-white
                             focus:ring-4
                             focus:ring-[#C9A15F]/10
+                            sm:min-h-[46px]
+                            sm:text-xs
                           "
                         />
                       </div>
@@ -698,9 +721,10 @@ export default function Consultation() {
                           className="
                             mb-1.5
                             block
-                            text-xs
+                            text-[11px]
                             font-bold
                             text-[#3C4852]
+                            sm:text-xs
                           "
                         >
                           نوع مشاوره
@@ -713,6 +737,7 @@ export default function Consultation() {
                           onChange={handleChange}
                           required
                           className="
+                            min-h-[44px]
                             w-full
                             rounded-lg
                             border
@@ -720,7 +745,7 @@ export default function Consultation() {
                             bg-[#FAFBFC]
                             px-3.5
                             py-2.5
-                            text-xs
+                            text-[11px]
                             text-[#26333D]
                             outline-none
                             transition
@@ -728,6 +753,8 @@ export default function Consultation() {
                             focus:bg-white
                             focus:ring-4
                             focus:ring-[#C9A15F]/10
+                            sm:min-h-[46px]
+                            sm:text-xs
                           "
                         >
                           <option value="">انتخاب نوع مشاوره</option>
@@ -748,9 +775,10 @@ export default function Consultation() {
                           className="
                             mb-1.5
                             block
-                            text-xs
+                            text-[11px]
                             font-bold
                             text-[#3C4852]
+                            sm:text-xs
                           "
                         >
                           توضیحات پرونده
@@ -765,6 +793,7 @@ export default function Consultation() {
                           rows={4}
                           required
                           className="
+                            min-h-[105px]
                             w-full
                             resize-none
                             rounded-lg
@@ -773,7 +802,7 @@ export default function Consultation() {
                             bg-[#FAFBFC]
                             px-3.5
                             py-2.5
-                            text-xs
+                            text-[11px]
                             leading-6
                             text-[#26333D]
                             outline-none
@@ -783,6 +812,8 @@ export default function Consultation() {
                             focus:bg-white
                             focus:ring-4
                             focus:ring-[#C9A15F]/10
+                            sm:min-h-[120px]
+                            sm:text-xs
                           "
                         />
                       </div>
@@ -803,9 +834,10 @@ export default function Consultation() {
                           bg-red-50
                           px-3
                           py-2
-                          text-xs
+                          text-[10px]
                           leading-6
                           text-red-600
+                          sm:text-xs
                         "
                       >
                         {errorMessage}
@@ -830,9 +862,10 @@ export default function Consultation() {
                           bg-emerald-50
                           px-3
                           py-2
-                          text-xs
+                          text-[10px]
                           leading-6
                           text-emerald-700
+                          sm:text-xs
                         "
                       >
                         <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0" />
@@ -861,10 +894,10 @@ export default function Consultation() {
                         justify-between
                         rounded-lg
                         bg-[#17202A]
-                        px-4
+                        px-3.5
                         py-2.5
                         font-['Vazirmatn']
-                        text-xs
+                        text-[11px]
                         font-black
                         text-white
                         shadow-[0_12px_30px_-12px_rgba(23,32,42,0.5)]
@@ -876,6 +909,8 @@ export default function Consultation() {
                         disabled:cursor-not-allowed
                         disabled:opacity-60
                         disabled:hover:translate-y-0
+                        sm:px-4
+                        sm:text-xs
                       "
                     >
                       <span>
@@ -889,6 +924,7 @@ export default function Consultation() {
                           flex
                           h-8
                           w-8
+                          shrink-0
                           items-center
                           justify-center
                           rounded-md
@@ -914,8 +950,9 @@ export default function Consultation() {
                       className="
                         mt-2
                         text-center
-                        text-[10px]
+                        text-[9px]
                         text-[#9AA3AA]
+                        sm:text-[10px]
                       "
                     >
                       تکمیل فرم کمتر از یک دقیقه زمان می‌برد.

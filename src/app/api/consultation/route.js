@@ -2,7 +2,99 @@ import { NextResponse } from "next/server";
 
 import { mongooseConnect } from "@/lib/mongodb";
 import Consultation from "@/models/Consultation";
+
 import { isAuthenticated } from "@/lib/auth";
+
+// =========================
+// POST - ثبت درخواست مشاوره
+// =========================
+
+export async function POST(request) {
+  try {
+    // دریافت اطلاعات فرم
+    const body = await request.json();
+
+    const { name, phone, subject, consultationType, description } = body;
+
+    // =========================
+    // Validation
+    // =========================
+
+    if (!name || !phone || !subject || !consultationType || !description) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: "لطفاً تمام فیلدها را تکمیل کنید.",
+        },
+        {
+          status: 400,
+        },
+      );
+    }
+
+    // بررسی نوع مشاوره
+    const validConsultationTypes = ["phone", "online", "in-person"];
+
+    if (!validConsultationTypes.includes(consultationType)) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: "نوع مشاوره نامعتبر است.",
+        },
+        {
+          status: 400,
+        },
+      );
+    }
+
+    // =========================
+    // اتصال به MongoDB
+    // =========================
+
+    await mongooseConnect();
+
+    // =========================
+    // ایجاد درخواست
+    // =========================
+
+    const consultation = await Consultation.create({
+      name: name.trim(),
+      phone: phone.trim(),
+      subject: subject.trim(),
+      consultationType,
+      description: description.trim(),
+    });
+
+    console.log("✅ Consultation Created:", consultation._id.toString());
+
+    // =========================
+    // Success Response
+    // =========================
+
+    return NextResponse.json(
+      {
+        success: true,
+        message: "درخواست مشاوره با موفقیت ثبت شد.",
+        consultation,
+      },
+      {
+        status: 201,
+      },
+    );
+  } catch (error) {
+    console.error("❌ Consultation POST Error:", error);
+
+    return NextResponse.json(
+      {
+        success: false,
+        message: "خطا در ثبت درخواست مشاوره.",
+      },
+      {
+        status: 500,
+      },
+    );
+  }
+}
 
 // =========================
 // GET - دریافت درخواست‌ها
@@ -36,7 +128,7 @@ export async function GET() {
       consultations,
     });
   } catch (error) {
-    console.error("Admin Consultations GET Error:", error);
+    console.error("❌ Admin Consultations GET Error:", error);
 
     return NextResponse.json(
       {
@@ -111,7 +203,7 @@ export async function DELETE(request) {
       message: "درخواست با موفقیت حذف شد.",
     });
   } catch (error) {
-    console.error("Admin Consultations DELETE Error:", error);
+    console.error("❌ Admin Consultations DELETE Error:", error);
 
     return NextResponse.json(
       {
