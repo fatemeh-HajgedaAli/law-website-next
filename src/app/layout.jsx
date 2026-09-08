@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 
 import ConditionalHeader from "@/components/layout/ConditionalHeader";
-import LoadingScreen from "@/components/LoadingScreen/LoadingScreen";
+import LoadingScreen from "@/components/loadingScreen/LoadingScreen";
 
 const vazirmatn = localFont({
   src: [
