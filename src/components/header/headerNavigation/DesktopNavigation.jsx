@@ -1,84 +1,84 @@
-// DesktopNavigation
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
-// start
+
 export default function DesktopNavigation({ isHomeOpen, setIsHomeOpen }) {
   return (
     <div className="hidden lg:flex">
-      <ul
-        className="flex items-center gap-8 text-foreground
-"
-      >
-        {/* Home Dropdown */}
-        <li className="relative">
-          <button
-            type="button"
-            onClick={() => setIsHomeOpen(!isHomeOpen)}
-            className="flex items-center gap-1 font-medium 
-             transition-colors hover:text-primary"
+      <ul className="flex items-center gap-8 text-foreground">
+        <li>
+          <Link
+            href="/"
+            className="font-medium transition-colors duration-200 hover:text-primary"
           >
             خانه
+          </Link>
+        </li>
+        <li
+          className="relative"
+          onMouseEnter={() => setIsHomeOpen(true)}
+          onMouseLeave={() => setIsHomeOpen(false)}
+        >
+          <button
+            type="button"
+            className="flex items-center gap-1 font-medium transition-colors duration-200 hover:text-primary"
+          >
+            خدمات ما
             <ChevronDown
-              className={`h-4 w-4 transition-transform ${
+              className={`h-4 w-4 transition-transform duration-300 ease-out ${
                 isHomeOpen ? "rotate-180" : ""
               }`}
             />
           </button>
 
-          {isHomeOpen && (
-            <div
-              className="absolute right-0 top-full mt-8 w-48 rounded-md
-             bg-white p-2 shadow-lg"
+          <div
+            className={`absolute right-0 top-full z-50 mt-2 w-48 origin-top-right rounded-md bg-white p-2 shadow-lg transition-all duration-300 ease-out ${
+              isHomeOpen
+                ? "visible translate-y-0 opacity-100 mt-8"
+                : "invisible -translate-y-2 opacity-0"
+            }`}
+          >
+            <Link
+              href="/#services"
+              className="block rounded-md px-4 py-3 text-sm transition-colors duration-200 hover:bg-primary hover:text-white"
             >
-              <Link
-                href="/#about-us"
-                className="block rounded-md px-4 py-3 text-sm transition-colors hover:bg-primary hover:text-white"
-              >
-                درباره ما
-              </Link>
+              خدمات ما
+            </Link>
 
-              <Link
-                href="/#cases"
-                className="block rounded-md px-4 py-3 text-sm transition-colors hover:bg-primary hover:text-white"
-              >
-                پرونده‌های ما
-              </Link>
+            <Link
+              href="/#cases"
+              className="block rounded-md px-4 py-3 text-sm transition-colors duration-200 hover:bg-primary hover:text-white"
+            >
+              پرونده‌های ما
+            </Link>
 
-              <Link
-                href="/#faq"
-                className="block rounded-md px-4 py-3 text-sm transition-colors hover:bg-primary hover:text-white"
-              >
-                سوالات متداول
-              </Link>
-            </div>
-          )} 
+            <Link
+              href="/#practiceAreas"
+              className="block rounded-md px-4 py-3 text-sm transition-colors duration-200 hover:bg-primary hover:text-white"
+            >
+              حوزه‌های تخصصی
+            </Link>
+          </div>
         </li>
-
-        {/* Services */}
         <li>
           <Link
-            href="/#services"
-            className="font-medium transition-colors hover:text-primary"
+            href="/#about-us"
+            className="font-medium transition-colors duration-200 hover:text-primary"
           >
-            خدمات ما
+            درباره ما
           </Link>
         </li>
-
-        {/* Blog */}
         <li>
           <Link
-            href="/blog"
-            className="font-medium transition-colors hover:text-primary"
+            href="/#faq"
+            className="font-medium transition-colors duration-200 hover:text-primary"
           >
-            وبلاگ
+            سوالات متداول
           </Link>
         </li>
-
-        {/* Contact */}
         <li>
           <Link
             href="/#contactus"
-            className="font-medium transition-colors hover:text-primary"
+            className="font-medium transition-colors duration-200 hover:text-primary"
           >
             تماس با ما
           </Link>

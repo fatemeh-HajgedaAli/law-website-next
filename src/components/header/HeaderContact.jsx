@@ -5,7 +5,7 @@ import { Phone, Mail } from "lucide-react";
 import { toPersianDigits } from "@/utils/toPersianDigits";
 
 export default function HeaderContact() {
-  const phoneNumber = "099002190109";
+  const phoneNumber = "۰۹۱۱۲۸۶۴۵۹۶";
 
   return (
     <header className="w-full border-b border-gray-200 bg-white">

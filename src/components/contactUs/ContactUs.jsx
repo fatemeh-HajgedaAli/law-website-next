@@ -1,31 +1,26 @@
 "use client";
 
 import { useState } from "react";
-import { MapPin, Phone, Clock, Navigation, ArrowLeft } from "lucide-react";
+import Image from "next/image";
+import { MapPin, Phone, Clock, ArrowLeft, ShieldCheck } from "lucide-react";
 
 const COLORS = {
   background: "#f8f6f2",
   foreground: "#161616",
   primary: "#b08d57",
   primaryDark: "#8c6d3f",
-  dark: "#080809",
-  brandGray: "#eeeeee",
 };
 
 const OFFICES = [
   {
     id: "tehran",
     name: "دفتر تهران",
-    address: "تهران، پردیس، فاز ۴، خیابان فردوس",
     hours: "شنبه تا چهارشنبه، ۹ تا ۱۸",
-    mapQuery: "تهران پردیس فاز ۴ خیابان فردوس",
   },
   {
     id: "mazandaran",
-    name: "دفتر مازندران",
-    address: "مازندران، نکا، جنب بانک ملی مرکزی",
+    name: "دفتر پردیس",
     hours: "شنبه تا چهارشنبه، ۹ تا ۱۷",
-    mapQuery: "نکا مازندران بانک ملی مرکزی",
   },
 ];
 
@@ -38,7 +33,7 @@ export default function ContactUs() {
     <section
       dir="rtl"
       id="contactus"
-      className="relative overflow-hidden px-6 py-12"
+      className="relative overflow-hidden px-6 py-16 md:py-20"
       style={{
         backgroundColor: COLORS.background,
         backgroundImage: `
@@ -61,7 +56,7 @@ export default function ContactUs() {
         `,
       }}
     >
-      {/* ================= DECORATIVE BACKGROUND ================= */}
+      {/* Decorative Background */}
 
       <div
         className="pointer-events-none absolute -right-40 -top-40 h-[500px] w-[500px] rounded-full blur-[130px]"
@@ -77,8 +72,6 @@ export default function ContactUs() {
         }}
       />
 
-      {/* Gold Line */}
-
       <div
         className="pointer-events-none absolute right-0 top-1/3 h-px w-full opacity-30"
         style={{
@@ -86,8 +79,6 @@ export default function ContactUs() {
             "linear-gradient(90deg, transparent, #b08d57, transparent)",
         }}
       />
-
-      {/* Subtle Grid */}
 
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.025]"
@@ -107,12 +98,12 @@ export default function ContactUs() {
         }}
       />
 
-      {/* ================= CONTENT ================= */}
+      {/* Content */}
 
       <div className="relative z-10 mx-auto max-w-6xl">
-        {/* ================= HEADER ================= */}
+        {/* Header */}
 
-        <div className="mx-auto mb-10 max-w-3xl text-center">
+        <div className="mx-auto mb-12 max-w-3xl text-center">
           <div className="mb-5 flex items-center justify-center gap-3">
             <span
               className="h-px w-12"
@@ -139,15 +130,16 @@ export default function ContactUs() {
           </div>
 
           <h2
-            className="mb-6 text-center text-3xl font-bold leading-[1.8] md:text-5xl"
+            className="mb-5 text-center text-3xl font-bold leading-[1.8] md:text-5xl"
             style={{
               color: COLORS.foreground,
             }}
           >
             همراه شما در مسیر عدالت
           </h2>
+
           <p
-            className="mt-5 text-center text-sm font-semibold leading-8 md:text-base"
+            className="mt-4 text-center text-sm font-semibold leading-8 md:text-base"
             style={{
               color: COLORS.primaryDark,
             }}
@@ -156,10 +148,10 @@ export default function ContactUs() {
           </p>
         </div>
 
-        {/* ================= MAIN ================= */}
+        {/* Main */}
 
         <div className="grid gap-6 lg:grid-cols-5">
-          {/* ================= OFFICES ================= */}
+          {/* Offices */}
 
           <div className="flex flex-col gap-4 lg:col-span-2">
             {OFFICES.map((office) => {
@@ -170,9 +162,7 @@ export default function ContactUs() {
                   key={office.id}
                   type="button"
                   onClick={() => setActiveId(office.id)}
-                  className="group rounded-2xl
-                   border p-6 text-right transition-all 
-                   duration-300 hover:-translate-y-1"
+                  className="group rounded-2xl border p-6 text-right transition-all duration-300 hover:-translate-y-1"
                   style={{
                     backgroundColor: isActive
                       ? "#ffffff"
@@ -208,8 +198,7 @@ export default function ContactUs() {
                     {/* Content */}
 
                     <div className="flex-1">
-                      <div className="flex items-center justify-between 
-                      gap-3">
+                      <div className="flex items-center justify-between gap-3">
                         <h3
                           className="text-lg font-bold"
                           style={{
@@ -227,19 +216,12 @@ export default function ContactUs() {
                         />
                       </div>
 
-                      <p
-                        className="mt-3 text-sm leading-7"
-                        style={{
-                          color: "#625f58",
-                        }}
-                      >
+                      <p className="mt-2 text-sm leading-7 text-[#777168]">
                         {office.address}
                       </p>
 
-                      {/* Hours */}
-
                       <div
-                        className="mt-4 flex items-center gap-2 text-xs"
+                        className="mt-3 flex items-center gap-2 text-xs"
                         style={{
                           color: "#999286",
                         }}
@@ -254,7 +236,7 @@ export default function ContactUs() {
               );
             })}
 
-            {/* ================= PHONE CTA ================= */}
+            {/* Phone CTA */}
 
             <div
               className="relative mt-2 overflow-hidden rounded-2xl border p-6"
@@ -264,8 +246,6 @@ export default function ContactUs() {
                 boxShadow: "0 20px 50px rgba(0,0,0,0.16)",
               }}
             >
-              {/* Gold Decoration */}
-
               <div
                 className="absolute -left-10 -top-10 h-32 w-32 rounded-full blur-2xl"
                 style={{
@@ -285,7 +265,7 @@ export default function ContactUs() {
                       className="h-5 w-5"
                       strokeWidth={1.7}
                       style={{
-                        color: COLORS.primaryDark,
+                        color: COLORS.primary,
                       }}
                     />
                   </div>
@@ -297,21 +277,21 @@ export default function ContactUs() {
                         color: "rgba(255,255,255,0.48)",
                       }}
                     >
-                      تماس مستقیم با گروه وکلای رهیاب
+                      تماس مستقیم با ما
                     </p>
 
                     <a
-                      href="tel:09902190109"
+                      href="tel:09112864596"
                       dir="ltr"
                       className="block text-xl font-bold tracking-wide text-white transition hover:text-[#d3b183]"
                     >
-                      ۰۹۹۰۲۱۹۰۱۰۹
+                      ۰۹۱۱۲۸۶۴۵۹۶
                     </a>
                   </div>
                 </div>
 
                 <a
-                  href="tel:09902190109"
+                  href="tel:09112864596"
                   className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5"
                   style={{
                     background: "linear-gradient(135deg, #b08d57, #8c6d3f)",
@@ -325,70 +305,77 @@ export default function ContactUs() {
             </div>
           </div>
 
-          {/* ================= MAP ================= */}
+          {/* Image Panel */}
 
-          <div
-            className="relative overflow-hidden rounded-2xl border lg:col-span-3"
-            style={{
-              minHeight: "460px",
-              borderColor: "rgba(176,141,87,0.35)",
-              backgroundColor: "#ffffff",
-              boxShadow: "0 20px 50px rgba(0,0,0,0.08)",
-            }}
-          >
-            <iframe
-              key={active.id}
-              title={active.name}
-              src={`https://www.google.com/maps?q=${encodeURIComponent(
-                active.mapQuery,
-              )}&output=embed`}
-              className="h-full min-h-[260px] w-full"
-              style={{
-                border: 0,
-              }}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
+          <div className="group relative min-h-[420px] overflow-hidden rounded-[2rem] border border-white/50 bg-[#171717] shadow-[0_25px_70px_rgba(0,0,0,0.15)] lg:col-span-3 lg:min-h-[570px]">
+            <Image
+              src="/images/testimonials/01.jpg"
+              alt="دفتر وکالت و خدمات حقوقی"
+              fill
+              priority={false}
+              sizes="(max-width: 1024px) 100vw, 60vw"
+              className="object-cover object-center transition-transform duration-[1200ms] ease-out group-hover:scale-105"
             />
 
-            {/* Map Label */}
+            {/* Dark Gradient */}
+
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-black/5" />
+
+            {/* Gold Glow */}
 
             <div
-              className="absolute right-5 top-5 
-              flex items-center gap-3 rounded-xl border 
-              px-4 py-3 shadow-lg backdrop-blur-md"
+              className="absolute -right-20 -top-20 h-60 w-60 rounded-full blur-[90px]"
               style={{
-                backgroundColor: "rgba(255,255,255,0.94)",
-                borderColor: "rgba(176,141,87,0.30)",
+                backgroundColor: "rgba(176,141,87,0.22)",
               }}
-            >
-              <div
-                className="flex h-8 w-8 items-center justify-center rounded-lg"
-                style={{
-                  backgroundColor: "rgba(176,141,87,0.12)",
-                }}
-              >
-                <Navigation
+            />
+
+            {/* Top Label */}
+
+            <div className="absolute right-6 top-6">
+              <div className="flex items-center gap-2 rounded-full border border-white/15 bg-black/25 px-4 py-2 backdrop-blur-md">
+                <ShieldCheck
                   className="h-4 w-4"
-                  strokeWidth={1.8}
                   style={{
-                    color: COLORS.primaryDark,
+                    color: COLORS.primary,
                   }}
                 />
-              </div>
 
-              <span
-                className="text-sm font-semibold"
-                style={{
-                  color: COLORS.foreground,
-                }}
-              >
-                {active.name}
-              </span>
+                <span className="text-[10px] font-semibold tracking-[0.18em] text-white">
+                  LAW FIRM
+                </span>
+              </div>
+            </div>
+
+            {/* Image Content */}
+
+            <div className="absolute inset-x-0 bottom-0 p-7 md:p-9">
+              <div className="max-w-xl">
+                <p
+                  className="mb-3 text-xs font-semibold tracking-[0.25em]"
+                  style={{
+                    color: "#d3b183",
+                  }}
+                >
+                  PROFESSIONAL LEGAL SERVICES
+                </p>
+
+                <h3 className="text-3xl font-bold leading-[1.7] text-white md:text-4xl">
+                  در کنار شما،
+                  <br />
+                  با تجربه و اطمینان
+                </h3>
+
+                <p className="mt-4 max-w-lg text-sm leading-7 text-white/65">
+                  برای دریافت مشاوره حقوقی و آشنایی بیشتر با خدمات ما، با دفتر
+                  تماس بگیرید.
+                </p>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* ================= BOTTOM ================= */}
+        {/* Bottom */}
 
         <div className="mt-14 flex justify-center">
           <div className="flex items-center gap-4">

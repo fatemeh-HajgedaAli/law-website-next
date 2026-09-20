@@ -10,6 +10,7 @@ import Testimonials from "./Testimonials/Testimonials";
 import Cases from "./cases/Cases";
 import FAQ from "./FAQ/FAQ";
 import ContactUs from "./contactUs/ContactUs";
+import Footer from "./footer/Footer";
 
 export default function MainHome() {
   return (
@@ -35,22 +36,23 @@ export default function MainHome() {
         <Cases />
       </section>
       {/* LegalPracticeAreas */}
-      <section id="services" className="scroll-mt-20">
+      <section id="services" className="scroll-mt-24">
         <LegalPracticeAreas />
       </section>
       {/* FAQ */}
-      <section>
+      <section className="scroll-mt-20">
         <FAQ />
       </section>
 
       {/* Testimonials */}
-      <section>
+      <section className="scroll-mt-20">
         <Testimonials />
       </section>
       {/* ContactUs */}
       <section id="contactus" className="scroll-mt-20">
         <ContactUs />
       </section>
+      <Footer />
     </>
   );
 }

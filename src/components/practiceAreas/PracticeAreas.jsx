@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { practiceAreas } from "./practiceData";
+import { FaArrowLeft } from "react-icons/fa";
 
 export default function PracticeAreas() {
   const [activeCard, setActiveCard] = useState(null);
@@ -122,7 +123,7 @@ export default function PracticeAreas() {
                     }
                   `}
                 >
-                  <span className="relative z-10">→</span>
+                  <FaArrowLeft className="relative z-10"/>
                 </Link>
               </div>
             </div>
