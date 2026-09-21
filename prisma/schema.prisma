@@ -1,0 +1,25 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+enum ConsultationType {
+  phone
+  online
+  in_person
+}
+
+model Consultation {
+  id               Int              @id @default(autoincrement())
+  name             String
+  phone            String
+  subject          String
+  consultationType ConsultationType
+  description      String
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+}

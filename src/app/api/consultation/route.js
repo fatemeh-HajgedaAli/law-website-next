@@ -1,8 +1,6 @@
 import { NextResponse } from "next/server";
 
-import { mongooseConnect } from "@/lib/mongodb";
-import Consultation from "@/models/Consultation";
-
+import { prisma } from "@/lib/prisma";
 import { isAuthenticated } from "@/lib/auth";
 
 // =========================
@@ -13,7 +11,6 @@ export async function POST(request) {
   try {
     // دریافت اطلاعات فرم
     const body = await request.json();
-
     const { name, phone, subject, consultationType, description } = body;
 
     // =========================
@@ -48,24 +45,21 @@ export async function POST(request) {
     }
 
     // =========================
-    // اتصال به MongoDB
+    // ایجاد درخواست در MySQL
     // =========================
 
-    await mongooseConnect();
-
-    // =========================
-    // ایجاد درخواست
-    // =========================
-
-    const consultation = await Consultation.create({
-      name: name.trim(),
-      phone: phone.trim(),
-      subject: subject.trim(),
-      consultationType,
-      description: description.trim(),
+    const consultation = await prisma.consultation.create({
+      data: {
+        name: name.trim(),
+        phone: phone.trim(),
+        subject: subject.trim(),
+        consultationType:
+          consultationType === "in-person" ? "in_person" : consultationType,
+        description: description.trim(),
+      },
     });
 
-    console.log("✅ Consultation Created:", consultation._id.toString());
+    console.log("✅ Consultation Created:", consultation.id);
 
     // =========================
     // Success Response
@@ -117,11 +111,12 @@ export async function GET() {
       );
     }
 
-    await mongooseConnect();
-
-    const consultations = await Consultation.find()
-      .sort({ createdAt: -1 })
-      .lean();
+    // دریافت مشاوره‌ها از MySQL
+    const consultations = await prisma.consultation.findMany({
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
 
     return NextResponse.json({
       success: true,
@@ -179,23 +174,46 @@ export async function DELETE(request) {
       );
     }
 
-    // اتصال به MongoDB
-    await mongooseConnect();
+    // تبدیل ID از string به number
+    const consultationId = Number(id);
 
-    // حذف درخواست
-    const deletedConsultation = await Consultation.findByIdAndDelete(id);
-
-    // اگر درخواست پیدا نشد
-    if (!deletedConsultation) {
+    if (!Number.isInteger(consultationId)) {
       return NextResponse.json(
         {
           success: false,
-          message: "درخواست موردنظر پیدا نشد.",
+          message: "شناسه درخواست نامعتبر است.",
         },
         {
-          status: 404,
+          status: 400,
         },
       );
+    }
+
+    // =========================
+    // حذف درخواست از MySQL
+    // =========================
+
+    try {
+      await prisma.consultation.delete({
+        where: {
+          id: consultationId,
+        },
+      });
+    } catch (error) {
+      // اگر رکورد وجود نداشته باشد
+      if (error.code === "P2025") {
+        return NextResponse.json(
+          {
+            success: false,
+            message: "درخواست موردنظر پیدا نشد.",
+          },
+          {
+            status: 404,
+          },
+        );
+      }
+
+      throw error;
     }
 
     return NextResponse.json({

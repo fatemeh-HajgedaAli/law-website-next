@@ -1,9 +1,6 @@
 import { NextResponse } from "next/server";
 
-import { mongooseConnect } from "@/lib/mongodb";
-
-import Consultation from "@/models/Consultation";
-
+import { prisma } from "@/lib/prisma";
 import { isAuthenticated } from "@/lib/auth";
 
 // =========================
@@ -26,20 +23,18 @@ export async function GET() {
       );
     }
 
-    await mongooseConnect();
-
-    const consultations = await Consultation.find()
-      .sort({
-        createdAt: -1,
-      })
-      .lean();
+    const consultations = await prisma.consultation.findMany({
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
 
     return NextResponse.json({
       success: true,
       consultations,
     });
   } catch (error) {
-    console.error(error);
+    console.error("GET CONSULTATIONS ERROR:", error);
 
     return NextResponse.json(
       {
@@ -74,7 +69,6 @@ export async function DELETE(request) {
     }
 
     const { searchParams } = new URL(request.url);
-
     const id = searchParams.get("id");
 
     if (!id) {
@@ -89,21 +83,25 @@ export async function DELETE(request) {
       );
     }
 
-    await mongooseConnect();
+    const consultationId = Number(id);
 
-    const deletedConsultation = await Consultation.findByIdAndDelete(id);
-
-    if (!deletedConsultation) {
+    if (!Number.isInteger(consultationId)) {
       return NextResponse.json(
         {
           success: false,
-          message: "درخواست پیدا نشد",
+          message: "شناسه درخواست نامعتبر است",
         },
         {
-          status: 404,
+          status: 400,
         },
       );
     }
+
+    await prisma.consultation.delete({
+      where: {
+        id: consultationId,
+      },
+    });
 
     return NextResponse.json(
       {
@@ -116,6 +114,18 @@ export async function DELETE(request) {
     );
   } catch (error) {
     console.error("DELETE CONSULTATION ERROR:", error);
+
+    if (error?.code === "P2025") {
+      return NextResponse.json(
+        {
+          success: false,
+          message: "درخواست پیدا نشد",
+        },
+        {
+          status: 404,
+        },
+      );
+    }
 
     return NextResponse.json(
       {

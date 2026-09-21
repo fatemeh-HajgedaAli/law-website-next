@@ -1,4 +1,6 @@
 const config = {
+  output: "standalone",
+
   plugins: {
     "@tailwindcss/postcss": {},
   },
