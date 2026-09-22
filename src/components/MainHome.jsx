@@ -22,7 +22,7 @@ export default function MainHome() {
         <PracticeAreas />
       </section>
       {/* AboutUs */}
-      <section id="aboutUs" className="scroll-mt-20">
+      <section id="aboutUs" className="scroll-mt-24">
         <AboutUs />
       </section>
 

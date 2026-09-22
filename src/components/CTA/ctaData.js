@@ -16,8 +16,8 @@ export const ctaData = [
     title: "راهکار حقوقی مطمئن",
     description:
       "برای تصمیم‌های مهم حقوقی، از مشاوره تخصصی و همراهی وکلای باتجربه بهره‌مند شوید.",
-    buttonText: "درباره ما",
-    href: "/#aboutUs",
+    buttonText: "خدمات ما",
+    href: "/#services",
     image: "/images/cta/cta-03.jpg",
   },
 ];

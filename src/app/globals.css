@@ -74,23 +74,36 @@ body {
   /* Persian text direction */
   direction: rtl;
 }
-/* ================================
-   Hide Scrollbars
-================================ */
-
-/* Chrome, Edge, Safari */
-::-webkit-scrollbar {
-  display: none;
-}
-
-/* Firefox */
-html,
-body {
-  scrollbar-width: none;
-}
 
 /* جلوگیری از اسکرول افقی ناخواسته */
 html,
 body {
   overflow-x: hidden;
+}
+/* ================================
+   Custom Scrollbar
+================================ */
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}
+
+/* Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) var(--background);
 }

@@ -9,7 +9,7 @@ export default function PracticeAreas() {
   const [activeCard, setActiveCard] = useState(null);
 
   return (
-    <section id="practiceAreas" className="relative mt-[20px] w-full py-2">
+    <section id="practiceAreas" className="relative mt-[20px] w-full lg:py-24 px-8">
       <div className="grid grid-cols-1 gap-2 sm:grid-cols-1 lg:grid-cols-5 lg:gap-0">
         {practiceAreas.map((item) => {
           const Icon = item.icon;

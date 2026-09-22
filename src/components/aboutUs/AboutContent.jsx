@@ -18,22 +18,25 @@ export default function AboutContent() {
           LEGAL SERVICES
         </span>
 
-        <div className="space-y-4">
-          <h2 className="text-4xl font-bold leading-tight text-[#20231D] lg:text-5xl">
-            راهکارهای حقوقی
-            <span className="text-[#B08B57]"> مطمئن</span>
+        <div className="space-y-5">
+          <h2 className="text-3xl font-extrabold leading-[1.3] text-[#20231D] sm:text-4xl lg:text-5xl">
+            تجربه، دقت و شجاعت
             <br />
-            برای آینده‌ای امن‌تر
+            در دفاع از <span className="text-[#B08B57]">حقوق شما</span>
           </h2>
 
-          <p className="max-w-xl text-lg leading-9 text-gray-600">
-            گروه وکلای رهیاب با بهره‌گیری از تجربه و دانش تخصصی وکلای دادگستری،
-            خدمات حقوقی دقیق و حرفه‌ای را برای اشخاص و کسب‌وکارها ارائه می‌دهد.
+          <p className="max-w-xl text-base leading-8 text-gray-600 sm:text-lg sm:leading-9">
+            دفتر وکالت{" "}
+            <strong className="font-bold text-[#20231D]">وکیل نصیری</strong> با
+            بهره‌گیری از دانش تخصصی، سابقه درخشان در پیگیری پرونده‌های پیچیده و
+            شناخت دقیق رویه‌های قضایی، بستری امن برای حل چالش‌های حقوقی اشخاص و
+            کسب‌وکارها فراهم کرده است.
           </p>
 
-          <p className="max-w-xl text-lg leading-9 text-gray-600">
-            هدف ما ارائه راهکارهایی شفاف، اصولی و نتیجه‌محور برای حل چالش‌های
-            حقوقی شما و ایجاد آرامش در مسیر پرونده است.
+          <p className="max-w-xl text-base leading-8 text-gray-600 sm:text-lg sm:leading-9">
+            باور ما بر این است که هر پرونده نیازمند یک استراتژی هوشمندانه است.
+            ما با ارائه راهکارهایی شفاف، اصولی و نتیجه‌محور، با قاطعیت در تمام
+            مراحل همراه شما هستیم.
           </p>
         </div>
 

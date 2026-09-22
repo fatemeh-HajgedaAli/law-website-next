@@ -129,7 +129,7 @@ export default function HeaderContact() {
         {/* Brand Logo */}
         <div className="shrink-0">
           <Image
-            src="/logos/mainLogo.png"
+            src="/logos/pngLogo.png"
             alt="Law Firm Logo"
             width={80}
             height={60}
